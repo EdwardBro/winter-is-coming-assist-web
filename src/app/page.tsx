@@ -8,19 +8,16 @@ export default function Home() {
       <AshParticles />
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-10"
+        className="absolute inset-0 bg-cover bg-center opacity-15"
         style={{ backgroundImage: "url('/assets/got.jpg')" }}
       ></div>
       <section className="relative min-h-screen container mx-auto px-4 py-16">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h1 className="custom-header text-5xl font-bold mb-4">
             Game of Thrones Assist App
           </h1>
-          <p className="text-xl text-gray-500 mb-4">
+          <p className="text-lg text-gray-400 mb-10">
             Your assistant for mastering complex board game rules.
-          </p>
-          <p className="text-xl text-gray-200 mb-10 font-semibold">
-            Become the one Ruler of Westeros!
           </p>
 
           <Link
@@ -29,11 +26,14 @@ export default function Home() {
           >
             View Rules
           </Link>
+          <p className="text-xl text-gray-200 mt-12 font-semibold">
+            Become the one Ruler of Westeros!
+          </p>
         </div>
 
         {/* Features Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-          <div className="p-6 border rounded-lg shadow-sm bg-black rounded-lg">
+          <div className="p-6 border rounded-xl shadow-sm bg-black rounded-lg">
             <h3 className="text-xl font-semibold mb-2">Easy Navigation</h3>
             <p className="text-gray-600">
               Quickly access rules and guides for a smooth gameplay experience.
@@ -53,6 +53,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <p className="text-gray-300 jsutify-center text-center">
+        EdwardBro Copyright
+      </p>
     </div>
   );
 }
