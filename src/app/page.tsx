@@ -53,9 +53,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <p className="text-gray-300 jsutify-center text-center">
-        EdwardBro Copyright
-      </p>
     </div>
   );
 }
