@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { useState, useEffect, useRef } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -9,22 +10,20 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url
 ).toString();
 
-// Component for Expansion Tabs (only on the Rules page)
 const ExpansionTabs = () => {
-  // Example expansion names; можно заменить на реальные названия дополнений.
   const expansionNames = [
     "BASE",
     "MAMKA OF DRAGONS",
     "McFIST FOR CROWS",
-    "DANCE OF DRAGONS",
+    "A DANCE WITH DRAGONS",
   ];
 
   return (
-    <div className="flex gap-4 mb-4 justify-center">
+    <div className="flex gap-2 mb-8 justify-center flex-wrap">
       {expansionNames.map((name, index) => (
         <button
           key={index}
-          className="px-4 py-2 border rounded hover:bg-gray-200 hover:text-gray-600 transition"
+          className="px-2 py-1 border rounded hover:bg-gray-200 hover:text-gray-600 transition"
         >
           {name}
         </button>
@@ -34,10 +33,10 @@ const ExpansionTabs = () => {
 };
 
 export default function RulesPage() {
+  const { language } = useLanguage();
   const [numPages, setNumPages] = useState<number | null>(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [width, setWidth] = useState(0);
-  const [pdfLang, setPdfLang] = useState<"ru" | "en">("ru");
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Measure container width for responsive PDF scaling.
@@ -60,7 +59,7 @@ export default function RulesPage() {
   };
 
   const pdfFilePath =
-    pdfLang === "ru" ? "/pdf/rules_RU.pdf" : "/pdf/rules_EN.pdf";
+    language === "ru" ? "/pdf/rules_RU.pdf" : "/pdf/rules_EN.pdf";
 
   return (
     <div className="container mx-auto p-4" ref={containerRef}>
@@ -68,49 +67,25 @@ export default function RulesPage() {
         Game Rules
       </h1>
 
-      <div className="flex justify-center items-center gap-4 mb-4">
-        <button
-          onClick={() => setPdfLang("ru")}
-          className={`flex items-center gap-2 px-4 py-2 rounded transition ${
-            pdfLang === "ru"
-              ? "bg-blue-500 text-white"
-              : "bg-gray-700 text-gray-800"
-          }`}
-        >
-          <span role="img" aria-label="Russian Flag">
-            🇷🇺
-          </span>
-        </button>
-        <button
-          onClick={() => setPdfLang("en")}
-          className={`flex items-center gap-2 px-4 py-2  rounded transition ${
-            pdfLang === "en"
-              ? "bg-blue-500 text-white"
-              : "bg-gray-700 text-gray-800"
-          }`}
-        >
-          <span role="img" aria-label="US Flag">
-            🇺🇸
-          </span>
-        </button>
-      </div>
+      {/*      <div className="flex justify-center items-center gap-4 mb-4">
+      </div>*/}
 
       <ExpansionTabs />
-
-      <Document
-        file={pdfFilePath}
-        onLoadSuccess={onDocumentLoadSuccess}
-        loading={<div>Loading PDF...</div>}
-        error={<div>Failed to load PDF.</div>}
-      >
-        <Page
-          pageNumber={pageNumber}
-          width={width}
-          scale={1}
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
-        />
-      </Document>
+      <div className="flex gap-3 mb-8 justify-center flex-wrap">
+        <Document
+          file={pdfFilePath}
+          onLoadSuccess={onDocumentLoadSuccess}
+          loading={<div>Loading PDF...</div>}
+          error={<div>Failed to load PDF.</div>}
+        >
+          <Page
+            pageNumber={pageNumber}
+            width={width}
+            renderAnnotationLayer={false}
+            renderTextLayer={false}
+          />
+        </Document>
+      </div>
 
       <div className="mt-6 text-center">
         <p className="mb-4">
