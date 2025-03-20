@@ -28,7 +28,7 @@
     opacity: 0.75;
   }
   100% {
-    transform: translate(var(--x-offset), 110vh) rotate(360deg);
+    transform: translate(var(--x-offset), 140vh) rotate(360deg);
     opacity: 0;
   }
 }

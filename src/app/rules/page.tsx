@@ -1,5 +1,6 @@
 "use client";
-
+import ExpansionTabs from "@/components/ExpansionTabs";
+import PdfNavButtons from "@/components/PdfNavButtons";
 import { useLanguage } from "@/context/LanguageContext";
 import { useState, useEffect, useRef } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -10,26 +11,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url
 ).toString();
 
-const ExpansionTabs = () => {
-  const expansionNames = [
-    "BASE",
-    "MAMKA OF DRAGONS",
-    "McFIST FOR CROWS",
-    "A DANCE WITH DRAGONS",
-  ];
-
-  return (
-    <div className="flex gap-2 mb-8 justify-center flex-wrap">
-      {expansionNames.map((name, index) => (
-        <button
-          key={index}
-          className="px-2 py-1 border rounded hover:bg-gray-200 hover:text-gray-600 transition"
-        >
-          {name}
-        </button>
-      ))}
-    </div>
-  );
+const expansionMapping: { [key: string]: string } = {
+  BASE: "rules",
+  "MAMKA OF DRAGONS": "Mother",
+  "McFIST FOR CROWS": "Crows",
+  "A DANCE WITH DRAGONS": "Dance",
 };
 
 export default function RulesPage() {
@@ -38,6 +24,7 @@ export default function RulesPage() {
   const [pageNumber, setPageNumber] = useState(1);
   const [width, setWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [selectedExpansion, setSelectedExpansion] = useState("BASE");
 
   // Measure container width for responsive PDF scaling.
   useEffect(() => {
@@ -58,8 +45,8 @@ export default function RulesPage() {
     setPageNumber((prevPage) => (prevPage > numPages ? numPages : prevPage));
   };
 
-  const pdfFilePath =
-    language === "ru" ? "/pdf/rules_RU.pdf" : "/pdf/rules_EN.pdf";
+  const filePrefix = expansionMapping[selectedExpansion] || "rules";
+  const pdfFilePath = `/pdf/${filePrefix}_${language.toUpperCase()}.pdf`;
 
   return (
     <div className="container mx-auto p-4" ref={containerRef}>
@@ -70,7 +57,10 @@ export default function RulesPage() {
       {/*      <div className="flex justify-center items-center gap-4 mb-4">
       </div>*/}
 
-      <ExpansionTabs />
+      <ExpansionTabs
+        selected={selectedExpansion}
+        onSelect={setSelectedExpansion}
+      />
       <div className="flex gap-3 mb-8 justify-center flex-wrap">
         <Document
           file={pdfFilePath}
@@ -87,26 +77,17 @@ export default function RulesPage() {
         </Document>
       </div>
 
-      <div className="mt-6 text-center">
+      <div className="text-center">
         <p className="mb-4">
           Page {pageNumber} {numPages ? `of ${numPages}` : ""}
         </p>
-        <div className="flex justify-center gap-4">
-          <button
-            className="px-4 py-2 bg-gray-600 rounded disabled:opacity-50"
-            onClick={() => setPageNumber((prev) => prev - 1)}
-            disabled={pageNumber <= 1}
-          >
-            Previous
-          </button>
-          <button
-            className="px-4 py-2 bg-gray-600 rounded disabled:opacity-50"
-            onClick={() => setPageNumber((prev) => prev + 1)}
-            disabled={numPages !== null ? pageNumber >= numPages : true}
-          >
-            Next
-          </button>
-        </div>
+
+        <PdfNavButtons
+          pageNumber={pageNumber}
+          numPages={numPages}
+          onPrev={() => setPageNumber((prev) => prev - 1)}
+          onNext={() => setPageNumber((prev) => prev + 1)}
+        />
       </div>
     </div>
   );
