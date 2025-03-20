@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("/fonts/Game of Thrones.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.custom-header {
+  font-family: "MyCustomFont", sans-serif;
+  line-height: 1.5;
+}
