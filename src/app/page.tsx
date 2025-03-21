@@ -9,7 +9,7 @@ export default function Home() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-15"
-        style={{ backgroundImage: "url('/assets/got.jpg')" }}
+        style={{ backgroundImage: "url('/assets/got_background.jpg')" }}
       ></div>
       <section className="relative min-h-screen container mx-auto px-4 py-16">
         <div className="text-center mb-10">

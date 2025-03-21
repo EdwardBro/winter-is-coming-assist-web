@@ -27,11 +27,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen flex flex-col">
         <LanguageProvider>
           {/* NavBar будет отображаться на всех страницах */}
           <NavBar />
-          <main>{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
       </body>
