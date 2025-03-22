@@ -39,10 +39,7 @@ export default function HintsPage() {
         <li>Tip 2: Understand your opponent's strategy.</li>
         <li>Tip 3: Use your resources wisely.</li>
       </ul>
-      <Accordion
-        items={items}
-        // Другие дома...
-      />
+      <Accordion items={items} />
     </div>
   );
 }
