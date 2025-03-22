@@ -100,10 +100,8 @@ export default function RulesPage() {
           file={pdfFilePath}
           onLoadSuccess={onDocumentLoadSuccess}
           loading={
-            <div className="flex justify-center items-center h-96">
-              <span className="animate-pulse text-xl text-gray-600">
-                Загрузка правил...
-              </span>
+            <div className="text-center py-16 animate-pulse">
+              <p className="text-lg text-gray-400">Загрузка PDF правил...</p>
             </div>
           }
           error={<div>Failed to load PDF.</div>}
