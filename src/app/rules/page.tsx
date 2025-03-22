@@ -25,7 +25,6 @@ export default function RulesPage() {
   const [width, setWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedExpansion, setSelectedExpansion] = useState("BASE");
-  const scrollPosRef = useRef<number>(0);
 
   // Load the saved page number from localStorage when the component mounts
   useEffect(() => {
