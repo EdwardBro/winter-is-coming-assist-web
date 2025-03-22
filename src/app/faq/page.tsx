@@ -1,8 +1,8 @@
 "use client";
 
-import CategoryTabs from "@/components/CategoryTabs";
-import FAQItemComponent from "@/components/FAQItem";
-import SearchBar from "@/components/SearchBar";
+import CategoryTabs from "@/components/faq/CategoryTabs";
+import FAQItemComponent from "@/components/faq/FAQItem";
+import SearchBar from "@/components/faq/SearchBar";
 import { useLanguage } from "@/context/LanguageContext";
 import { faqData } from "@/data/faq";
 import React, { useState } from "react";
