@@ -25,8 +25,25 @@ export default function RulesPage() {
   const [width, setWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedExpansion, setSelectedExpansion] = useState("BASE");
+  const scrollPosRef = useRef<number>(0);
 
-  // Measure container width for responsive PDF scaling.
+  // Load the saved page number from localStorage when the component mounts
+  useEffect(() => {
+    const savedPage = localStorage.getItem("rulesPageNumber");
+    if (savedPage) {
+      const parsedPage = parseInt(savedPage, 10);
+      if (!isNaN(parsedPage)) {
+        setPageNumber(parsedPage);
+      }
+    }
+  }, []);
+
+  // Save the current page number to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("rulesPageNumber", pageNumber.toString());
+  }, [pageNumber]);
+
+  // Measure container width for responsive PDF scaling
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -34,7 +51,7 @@ export default function RulesPage() {
       }
     };
 
-    updateWidth(); // initial measurement
+    updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
@@ -43,6 +60,24 @@ export default function RulesPage() {
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
     setPageNumber((prevPage) => (prevPage > numPages ? numPages : prevPage));
+  };
+
+  const handlePrev = () => {
+    if (containerRef.current) {
+      scrollPosRef.current = containerRef.current.scrollTop;
+    }
+    if (pageNumber > 1) {
+      setPageNumber((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (containerRef.current) {
+      scrollPosRef.current = containerRef.current.scrollTop;
+    }
+    if (numPages !== null && pageNumber < numPages) {
+      setPageNumber((prev) => prev + 1);
+    }
   };
 
   const filePrefix = expansionMapping[selectedExpansion] || "rules";
@@ -61,7 +96,7 @@ export default function RulesPage() {
         selected={selectedExpansion}
         onSelect={setSelectedExpansion}
       />
-      <div className="flex gap-3 mb-8 justify-center flex-wrap">
+      <div className="flex mb-8 justify-center flex-wrap overflow-y-auto">
         <Document
           file={pdfFilePath}
           onLoadSuccess={onDocumentLoadSuccess}
@@ -85,8 +120,8 @@ export default function RulesPage() {
         <PdfNavButtons
           pageNumber={pageNumber}
           numPages={numPages}
-          onPrev={() => setPageNumber((prev) => prev - 1)}
-          onNext={() => setPageNumber((prev) => prev + 1)}
+          onPrev={handlePrev}
+          onNext={handleNext}
         />
       </div>
     </div>

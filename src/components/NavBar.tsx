@@ -10,6 +10,7 @@ const navLinks: NavLink[] = [
   { label: "FAQ", href: "/faq" },
   { label: "Hints", href: "/hints" },
   { label: "Extra", href: "/extra" },
+  { label: "Cards", href: "/cards" },
 ];
 
 const LanguageSwitcher: FC = () => {
