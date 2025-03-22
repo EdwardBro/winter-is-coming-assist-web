@@ -15,8 +15,8 @@ const ExtraPage: React.FC = () => {
         Cards
       </h1>
       <p className="text-lg mb-6 text-center">
-        "До меня дошли слухи, что здесь можно найти карты персонажей и
-        интересные факты о мире Game of Thrones." - Лорд Варис
+        &ldquo;До меня дошли слухи, что здесь можно найти карты персонажей и
+        интересные факты о мире Game of Thrones.&ldquo; - Лорд Варис
       </p>
 
       <div className="mt-8 text-center">

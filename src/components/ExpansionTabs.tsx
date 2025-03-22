@@ -13,8 +13,8 @@ const ExpansionTabs: React.FC<ExpansionTabsProps> = ({
 }) => {
   const expansionNames = [
     "BASE",
-    "MAMKA OF DRAGONS",
-    "McFIST FOR CROWS",
+    "MOTHER OF DRAGONS",
+    "A FEAST FOR CROWS",
     "A DANCE WITH DRAGONS",
   ];
 

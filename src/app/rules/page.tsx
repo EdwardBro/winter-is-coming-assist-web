@@ -13,8 +13,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const expansionMapping: { [key: string]: string } = {
   BASE: "rules",
-  "MAMKA OF DRAGONS": "Mother",
-  "McFIST FOR CROWS": "Crows",
+  "MOTHER OF DRAGONS": "Mother",
+  "A FEAST FOR CROWS": "Crows",
   "A DANCE WITH DRAGONS": "Dance",
 };
 

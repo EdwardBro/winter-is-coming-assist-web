@@ -18,3 +18,11 @@ export interface HouseCard {
   // Например, lang: string;
   // Или дополнительные параметры для сортировки
 }
+
+export interface SimpleCard {
+  id: string;
+  title: string;
+  image?: string;
+  description?: string;
+  faction: string;
+}

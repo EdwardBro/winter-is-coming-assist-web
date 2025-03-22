@@ -1,9 +1,9 @@
 "use client";
 
-import { CardData } from "@/types";
+import { SimpleCard } from "@/types";
 
 interface CardModalProps {
-  card: CardData;
+  card: SimpleCard;
   onClose: () => void;
 }
 
