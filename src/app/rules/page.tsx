@@ -63,18 +63,10 @@ export default function RulesPage() {
   };
 
   const handlePrev = () => {
-    if (containerRef.current) {
-      scrollPosRef.current = containerRef.current.scrollTop;
-    }
-    if (pageNumber > 1) {
-      setPageNumber((prev) => prev - 1);
-    }
+    if (pageNumber > 1) setPageNumber((prev) => prev - 1);
   };
 
   const handleNext = () => {
-    if (containerRef.current) {
-      scrollPosRef.current = containerRef.current.scrollTop;
-    }
     if (numPages !== null && pageNumber < numPages) {
       setPageNumber((prev) => prev + 1);
     }
@@ -96,14 +88,29 @@ export default function RulesPage() {
         selected={selectedExpansion}
         onSelect={setSelectedExpansion}
       />
+
       <div className="flex mb-8 justify-center flex-wrap overflow-y-auto">
+        {!numPages && (
+          <img
+            src={`/images/rules-preview-${language.toLowerCase()}.jpg`}
+            alt="Preview"
+            className="mx-auto mb-4 max-w-full"
+          />
+        )}
         <Document
           file={pdfFilePath}
           onLoadSuccess={onDocumentLoadSuccess}
-          loading={<div>Loading PDF...</div>}
+          loading={
+            <div className="flex justify-center items-center h-96">
+              <span className="animate-pulse text-xl text-gray-600">
+                Загрузка правил...
+              </span>
+            </div>
+          }
           error={<div>Failed to load PDF.</div>}
         >
           <Page
+            key={pageNumber}
             pageNumber={pageNumber}
             width={width}
             renderAnnotationLayer={false}
