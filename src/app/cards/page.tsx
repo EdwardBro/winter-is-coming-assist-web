@@ -1,13 +1,13 @@
 "use client";
 
 import CardModal from "@/components/CardModal";
-import { HouseCard } from "@/types";
+import { SimpleCard } from "@/types";
 import { useState } from "react";
 import Link from "next/link";
 import houseCards from "@/data/houseCards";
 
 const ExtraPage: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState<HouseCard | null>(null);
+  const [selectedCard, setSelectedCard] = useState<SimpleCard | null>(null);
 
   return (
     <div className="container mx-auto p-4">

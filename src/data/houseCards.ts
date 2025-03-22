@@ -1,4 +1,4 @@
-import { HouseCard } from "@/types";
+/*import { HouseCard } from "@/types";*/
 import { generateHouseCards } from "@/utils/generateHouseCards";
 
 const houses = [

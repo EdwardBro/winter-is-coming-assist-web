@@ -1,7 +1,8 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { useState, ReactNode, useEffect, useRef } from "react";
+
+//TODO: Remove lucide-react library
 
 interface AccordionItem {
   id: number | string;
@@ -64,11 +65,6 @@ export default function Accordion({ items }: AccordionProps) {
               <span className="bg-black/70 px-2 py-1 rounded">
                 {item.title}
               </span>
-              {/*<ChevronDown
-                className={`h-7 w-7 transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : "rotate-0"
-                }`}
-              />*/}
             </button>
             <div
               id={`accordion-body-${index}`}
