@@ -2,12 +2,23 @@
 
 import CardModal from "@/components/CardModal";
 import { SimpleCard } from "@/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { generateHouseCards } from "@/utils/generateHouseCards";
 import Link from "next/link";
 import houseCards from "@/data/houseCards";
 
 const ExtraPage: React.FC = () => {
   const [selectedCard, setSelectedCard] = useState<SimpleCard | null>(null);
+  const [cards, setCards] = useState<SimpleCard[]>([]);
+
+  useEffect(() => {
+    const loadCards = async () => {
+      const generated = await generateHouseCards(houseCards);
+      setCards(generated);
+    };
+
+    loadCards();
+  }, []);
 
   return (
     <div className="container mx-auto p-4">
@@ -16,21 +27,21 @@ const ExtraPage: React.FC = () => {
       </h1>
       <p className="text-lg mb-6 text-center">
         &ldquo;До меня дошли слухи, что здесь можно найти карты персонажей и
-        интересные факты о мире Game of Thrones.&ldquo; - Лорд Варис
+        интересные факты о них.&ldquo; - Лорд Варис
       </p>
 
-      <div className="mt-8 text-center">
+      {/*      <div className="mt-8 text-center">
         <Link
           href="/extra/houses"
           className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
         >
           Выбрать дом
         </Link>
-      </div>
+      </div>*/}
 
       {/* Single grid to display both static house info and dynamic card items */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-9">
-        {houseCards.map((card) => (
+        {cards.map((card) => (
           <div
             key={card.id}
             className="rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"

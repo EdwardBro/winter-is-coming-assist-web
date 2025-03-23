@@ -1,7 +1,6 @@
 /*import { HouseCard } from "@/types";*/
-import { generateHouseCards } from "@/utils/generateHouseCards";
 
-const houses = [
+const houseCards = [
   {
     faction: "lannister",
     cards: [
@@ -76,7 +75,7 @@ const houses = [
   },
 ];
 
-const houseCards = generateHouseCards(houses);
+/*const houseCards = generateHouseCards(houses);*/
 
 export default houseCards;
 
