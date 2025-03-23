@@ -12,7 +12,7 @@ export default function FAQPage() {
   const { language } = useLanguage();
   const [query, setQuery] = useState("");
   /*  const categories = ["All", "General", "Gameplay", "PWA"];*/
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  /*  const [selectedCategory, setSelectedCategory] = useState("All");*/
 
   const currentFaqData = faqData[language];
 
@@ -21,9 +21,10 @@ export default function FAQPage() {
     const matchesQuery =
       item.question.toLowerCase().includes(query.toLowerCase()) ||
       item.answer.toLowerCase().includes(query.toLowerCase());
-    const matchesCategory =
+    /*    const matchesCategory =
       selectedCategory === "All" || item.category === selectedCategory;
-    return matchesQuery && matchesCategory;
+    return matchesQuery && matchesCategory;*/
+    return matchesQuery;
   });
 
   // Set up swipe handlers on the FAQ list container.

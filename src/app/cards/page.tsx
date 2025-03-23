@@ -4,7 +4,7 @@ import CardModal from "@/components/CardModal";
 import { SimpleCard } from "@/types";
 import { useState, useEffect } from "react";
 import { generateHouseCards } from "@/utils/generateHouseCards";
-import Link from "next/link";
+/*import Link from "next/link";*/
 import houseCards from "@/data/houseCards";
 
 const ExtraPage: React.FC = () => {
