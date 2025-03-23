@@ -7,7 +7,7 @@ import { Language, useLanguage } from "@/context/LanguageContext";
 const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Rules", href: "/rules" },
-  { label: "FAQ", href: "/faq" },
+  /*  { label: "FAQ", href: "/faq" },*/
   { label: "Hints", href: "/hints" },
   { label: "Extra", href: "/extra" },
   { label: "Cards", href: "/cards" },
