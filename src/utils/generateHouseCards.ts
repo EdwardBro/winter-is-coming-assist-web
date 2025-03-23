@@ -22,7 +22,7 @@ const findImage = async (cardId: string): Promise<string | null> => {
       const res = await fetch(path, { method: "HEAD" });
       if (res.ok) return path;
     } catch (e) {
-      // Если fetch упал, пропускаем
+      console.error(e); // Если fetch упал, пропускаем
     }
   }
 
