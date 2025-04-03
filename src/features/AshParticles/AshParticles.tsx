@@ -11,7 +11,7 @@ interface Particle {
   xOffset: number; // горизонтальное смещение, в пикселях (от -50 до +50)
 }
 
-const NUM_PARTICLES = 50;
+const NUM_PARTICLES = 70;
 
 const AshParticles: React.FC = () => {
   const [particles, setParticles] = useState<Particle[]>([]);
