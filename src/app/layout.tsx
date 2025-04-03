@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "GOT Assist",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
+        <Analytics />
         <LanguageProvider>
           {/* NavBar будет отображаться на всех страницах */}
           <NavBar />
