@@ -73,25 +73,29 @@ const NavLinkItem: FC<{
 const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => (
   <div
     className={`fixed inset-0 z-40 transition-opacity duration-300 ${
-      isOpen ? "opacity-90" : "opacity-0 pointer-events-none"
+      isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
     }`}
     onClick={onClose}
   >
     <div
-      className={`absolute top-0 left-0 w-64 h-1/3 bg-white shadow-lg m-2 rounded-lg transform transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
+      className="absolute inset-0 bg-black/40" // затемняющий фон под drawer
+      aria-hidden="true"
+    />
+    <div
+      className={`absolute top-0 right-0 w-64 h-1/2 bg-white shadow-lg m-2 rounded-lg transform transition-transform duration-300 ${
+        isOpen ? "-translate-x-0" : "translate-x-full"
       }`}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="p-4">
-        <h2 className="mb-4 text-xl font-bold text-gray-800">Menu</h2>
-        <nav className="flex flex-col space-y-2">
+      <div className="p-6">
+        <h2 className="mb-6 text-2xl font-bold text-gray-900">Menu</h2>
+        <nav className="flex flex-col space-y-5">
           {navLinks.map((link) => (
             <NavLinkItem
               key={link.href}
               item={link}
               onClick={onClose}
-              className="text-gray-800"
+              className="text-lg text-gray-800 hover:outline"
             />
           ))}
         </nav>
@@ -117,8 +121,10 @@ const NavBar = () => {
   return (
     <header className="bg-gray-800 text-white">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="text-sm font-bold">
-          <Link href="/">Game of Thrones Assist App</Link>
+        <div className="text-sm font-bold ">
+          <Link href="/" className=" text-lg auto-wrap">
+            Game of Thrones Assist
+          </Link>
         </div>
         <LanguageSwitcher />
         <DesktopNav />

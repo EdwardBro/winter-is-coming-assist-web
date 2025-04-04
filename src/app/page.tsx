@@ -8,10 +8,10 @@ export default function Home() {
       <AshParticles />
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-15"
+        className="absolute w-full bg-cover bg-center opacity-20"
         style={{ backgroundImage: "url('/assets/got_background.jpg')" }}
       ></div>
-      <section className="relative min-h-screen container mx-auto px-4 py-16">
+      <section className="relative min-h-[75vh] sm:min-h-[90vh] md:min-h-screen container mx-auto px-4 py-16">
         <div className="text-center mb-10">
           <h1 className="custom-header text-5xl font-bold mb-4">
             Game of Thrones Assist App
