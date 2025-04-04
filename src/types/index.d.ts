@@ -22,7 +22,7 @@ export interface HouseCard {
 export interface SimpleCard {
   id: string;
   title: string;
-  image?: string;
+  image: string;
   description?: string;
   faction: string;
 }
