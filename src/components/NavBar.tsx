@@ -1,31 +1,37 @@
 "use client";
+import "@/i18n/i18n-client";
 import React, { FC, useState } from "react";
 import Link from "next/link";
 import type { NavLink } from "../types";
-import { Language, useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
 
 const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Rules", href: "/rules" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Hints", href: "/hints" },
-  { label: "Extra", href: "/extra" },
-  { label: "Cards", href: "/cards" },
+  { label: "home", href: "/" },
+  { label: "rules", href: "/rules" },
+  { label: "faq", href: "/faq" },
+  { label: "hints", href: "/hints" },
+  { label: "extra", href: "/extra" },
+  { label: "cards", href: "/cards" },
 ];
 
 const LanguageSwitcher: FC = () => {
-  const { language, setLanguage } = useLanguage();
+  const router = useRouter();
+  const { i18n } = useTranslation();
 
-  const handleSwitch = (lang: Language) => {
-    setLanguage(lang);
+  const handleSwitch = (lang: string) => {
+    i18n.changeLanguage(lang);
+    router.refresh();
   };
+
+  const currentLang = i18n.language;
 
   return (
     <div className="flex">
       <button
         onClick={() => handleSwitch("en")}
         className={`px-1 border rounded-l-lg hover:bg-gray-200 ${
-          language === "en"
+          currentLang === "en"
             ? "bg-blue-500 text-white"
             : "bg-transparent text-gray-500"
         }`}
@@ -37,7 +43,7 @@ const LanguageSwitcher: FC = () => {
       <button
         onClick={() => handleSwitch("ru")}
         className={`px-1 border rounded-r-lg hover:bg-gray-200 ${
-          language === "ru"
+          currentLang === "ru"
             ? "bg-blue-500 text-white"
             : "bg-transparent text-black"
         }`}
@@ -59,16 +65,19 @@ const NavLinkItem: FC<{
   item: NavLink;
   onClick?: () => void;
   className?: string;
-}> = ({ item, onClick, className = "" }) => (
-  // Using the new Next.js Link behavior without a nested <a> tag.
-  <Link
-    href={item.href}
-    onClick={onClick}
-    className={`hover:underline ${className}`}
-  >
-    {item.label}
-  </Link>
-);
+}> = ({ item, onClick, className = "" }) => {
+  const { t } = useTranslation();
+  return (
+    // Using the new Next.js Link behavior without a nested <a> tag.
+    <Link
+      href={item.href}
+      onClick={onClick}
+      className={`hover:underline ${className}`}
+    >
+      {t(`nav.${item.label}`)}
+    </Link>
+  );
+};
 
 const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => (
   <div
@@ -115,15 +124,14 @@ const DesktopNav: FC = () => (
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const handleDrawerOpen = () => setDrawerOpen(true);
-  const handleDrawerClose = () => setDrawerOpen(false);
+  const { t } = useTranslation();
 
   return (
     <header className="bg-gray-800 text-white">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="text-sm font-bold ">
           <Link href="/" className=" text-lg auto-wrap">
-            Game of Thrones Assist
+            {t("appTitle")}
           </Link>
         </div>
         <LanguageSwitcher />
@@ -132,7 +140,7 @@ const NavBar = () => {
           type="button"
           aria-label="Открыть меню"
           className="md:hidden"
-          onClick={handleDrawerOpen}
+          onClick={() => setDrawerOpen(true)}
         >
           <svg
             className="w-8 h-8"
@@ -150,7 +158,7 @@ const NavBar = () => {
         </button>
       </div>
       {/* Drawer menu */}
-      <LeftDrawer isOpen={drawerOpen} onClose={handleDrawerClose} />
+      <LeftDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </header>
   );
 };

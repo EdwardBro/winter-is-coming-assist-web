@@ -1,55 +1,56 @@
-/*import Image from "next/image";*/
+"use client";
+import { useTranslation } from "react-i18next";
 import AshParticles from "@/features/AshParticles/AshParticles";
 import Link from "next/link";
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
     <div className="relative min-h-screen">
       <AshParticles />
       {/* Background Image */}
       <div
-        className="absolute w-full bg-cover bg-center opacity-20"
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-20"
         style={{ backgroundImage: "url('/assets/got_background.jpg')" }}
       ></div>
       <section className="relative min-h-[75vh] sm:min-h-[90vh] md:min-h-screen container mx-auto px-4 py-16">
         <div className="text-center mb-10">
           <h1 className="custom-header text-5xl font-bold mb-4">
-            Game of Thrones Assist App
+            {t("home.title")}
           </h1>
-          <p className="text-lg text-gray-400 mb-10">
-            Your assistant for mastering complex board game rules.
-          </p>
+          <p className="text-lg text-gray-400 mb-10">{t("home.description")}</p>
 
           <Link
             href="/rules"
             className="bg-gradient-to-r from-red-900 via-gray to-gray-800 text-white text-2xl font-bold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
           >
-            View Rules
+            {t("home.button")}
           </Link>
           <p className="text-xl text-gray-200 mt-12 font-semibold">
-            Become the one Ruler of Westeros!
+            {t("home.cta")}
           </p>
         </div>
 
         {/* Features Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           <div className="p-6 border rounded-xl shadow-sm bg-black rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">Easy Navigation</h3>
-            <p className="text-gray-600">
-              Quickly access rules and guides for a smooth gameplay experience.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">
+              {t("home.feature1.title")}
+            </h3>
+            <p className="text-gray-600">{t("home.feature1.desc")}</p>
           </div>
           <div className="p-6 border rounded-lg shadow-sm bg-black">
-            <h3 className="text-xl font-semibold mb-2">Interactive FAQ</h3>
-            <p className="text-gray-600">
-              Get instant answers to your questions with our interactive FAQ.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">
+              {t("home.feature2.title")}
+            </h3>
+            <p className="text-gray-600">{t("home.feature2.desc")}</p>
           </div>
           <div className="p-6 border rounded-lg shadow-sm bg-black">
-            <h3 className="text-xl font-semibold mb-2">Detailed Guides</h3>
-            <p className="text-gray-600">
-              In-depth strategies and tips to help you master the game.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">
+              {t("home.feature3.title")}
+            </h3>
+            <p className="text-gray-600">{t("home.feature3.desc")}</p>
           </div>
         </div>
       </section>
