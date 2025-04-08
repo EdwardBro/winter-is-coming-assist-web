@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "rules": "Rules",
+    "faq": "FAQ",
+    "hints": "Hints",
+    "extra": "Extra",
+    "cards": "Cards"
+  },
+  "home": {
+    "title": "Game of Thrones Assist",
+    "description": "Your assistant for mastering complex board game rules.",
+    "button": "View Rules",
+    "cta": "Become the one Ruler of Westeros!",
+    "feature1": {
+      "title": "Easy Navigation",
+      "desc": "Quickly access rules and guides for a smooth gameplay experience."
+    },
+    "feature2": {
+      "title": "Interactive FAQ",
+      "desc": "Get instant answers to your questions with our interactive FAQ."
+    },
+    "feature3": {
+      "title": "Detailed Guides",
+      "desc": "In-depth strategies and tips to help you master the game."
+    }
+  },
+  "footer": {
+    "rights": "© {{year}} All rights reserved. This app is not affiliated with HBO or Fantasy Flight Games."
+  },
+  "appTitle": "Game of Thrones Assist",
+  "rules": {
+    "title": "Rules",
+    "loading": "Loading PDF file...",
+    "error": "Failed to load PDF",
+    "page": "Page"
+  }
+}
