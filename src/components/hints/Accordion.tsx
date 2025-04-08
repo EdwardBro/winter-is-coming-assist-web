@@ -2,8 +2,6 @@
 
 import { useState, ReactNode, useEffect, useRef } from "react";
 
-//TODO: Remove lucide-react library
-
 interface AccordionItem {
   id: number | string;
   title: string;
@@ -41,7 +39,7 @@ export default function Accordion({ items }: AccordionProps) {
         return (
           <div
             key={item.id}
-            className="relative border border-gray-300 rounded shadow-md overflow-hidden max-w-2xl mx-auto"
+            className="relative border-3 border-gray-300 rounded-xl shadow-md overflow-hidden max-w-2xl mx-auto"
             ref={(el) => {
               refs.current[index] = el;
             }}

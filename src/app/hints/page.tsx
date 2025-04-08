@@ -35,16 +35,29 @@ export default function HintsPage() {
         {/*Here you will find tips and tricks to improve your gameplay.*/}
         Здесь вы найдёте советы и хитрости, чтобы улучшить свою игру.
       </p>
-      <ul className="list-disc list-inside">
-        {/*        <li>Tip 1: Always plan your moves ahead.</li>
+      {/*        <li>Tip 1: Always plan your moves ahead.</li>
         <li>Tip 2: Understand your opponent's strategy.</li>
         <li>Tip 3: Use your resources wisely.</li>*/}
+      {/*<ul className="list-disc list-inside">
+        
         <li>Совет 1: Следите за снабжением.</li>
         <li>
           Совет 2: Не забывайте о дипломатии. Можно добиться целей меньшей
           кровью.
         </li>
         <li>Совет 3: Планируйте ходы заранее и наперёд.</li>
+      </ul>*/}
+      <ul className="space-y-4 max-w-2xl mx-auto">
+        <li className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center">
+          <strong>Совет 1:</strong> Следите за снабжением.
+        </li>
+        <li className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center">
+          <strong>Совет 2:</strong> Не забывайте о дипломатии. Можно добиться
+          целей меньшей кровью.
+        </li>
+        <li className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center">
+          <strong>Совет 3:</strong> Планируйте ходы заранее и наперёд.
+        </li>
       </ul>
       <br />
       <Accordion items={items} />
