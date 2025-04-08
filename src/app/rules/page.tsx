@@ -24,7 +24,7 @@ const expansionMapping: { [key: string]: string } = {
 
 export default function RulesPage() {
   const { i18n, t } = useTranslation();
-  const [numPages, setNumPages] = useState<number | null>(null);
+  /*  const [numPages, setNumPages] = useState<number | null>(null);*/
   const [initialPage, setInitialPage] = useState(0);
   const [selectedExpansion, setSelectedExpansion] = useState("BASE");
 
