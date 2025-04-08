@@ -4,7 +4,7 @@ import CardModal from "@/components/CardModal";
 import { SimpleCard } from "@/types";
 import { useState, useEffect } from "react";
 import { generateHouseCards } from "@/utils/generateHouseCards";
-/*import Link from "next/link";*/
+import Image from "next/image";
 import houseCards from "@/data/houseCards";
 
 const ExtraPage: React.FC = () => {
@@ -47,9 +47,11 @@ const ExtraPage: React.FC = () => {
             className="rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
             onClick={() => setSelectedCard(card)}
           >
-            <img
+            <Image
+              key={card.id}
               src={card.image}
               alt={card.title}
+              loading="lazy"
               className="w-full h-48 object-cover"
             />
             <div className="p-4 bg-gray-900">
