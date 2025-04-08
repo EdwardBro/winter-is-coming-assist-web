@@ -1,10 +1,10 @@
 "use client";
 
 /*import CategoryTabs from "@/components/faq/CategoryTabs";*/
-import FAQItemComponent from "@/components/faq/FAQItem";
+/*import FAQItemComponent from "@/components/faq/FAQItem";*/
 import SearchBar from "@/components/faq/SearchBar";
 import { useTranslation } from "react-i18next";
-import { faqData } from "@/data/faq";
+/*import faqData from "@/data/faq.json";*/
 import React, { useState } from "react";
 /*import { useSwipeable } from "react-swipeable";*/
 
