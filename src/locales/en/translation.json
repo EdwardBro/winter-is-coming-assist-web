@@ -40,5 +40,35 @@
       "A FEAST FOR CROWS": "A Feast for Crows",
       "A DANCE WITH DRAGONS": "A Dance with Dragons"
     }
+  },
+  "hints": {
+    "title": "Hints",
+    "intro": "Here you will find tips and tricks to improve your Game of Thrones games.",
+    "tip": "Tip",
+    "list": [
+      "Keep an eye on your supply!",
+      "Use diplomacy — you don’t always need war to win.",
+      "Plan several moves ahead."
+    ],
+    "1": {
+      "title": "How to start as Lannisters"
+    },
+    "2": {
+      "title": "How to start as Starks"
+    },
+    "3": {
+      "title": "How to start as Baratheons"
+    },
+    "4": {
+      "title": "How to start as Greyjoys"
+    },
+    "5": {
+      "title": "How to start as Martells"
+    },
+    "6": {
+      "title": "How to start as Tyrells"
+    },
+    "overview": "Overview",
+    "beginnings": "Starting Tips"
   }
 }

@@ -1,10 +1,15 @@
+"use client";
+
 import Accordion from "@/components/hints/Accordion";
 import hintsData from "@/data/hints";
+import { useTranslation } from "react-i18next";
 
 export default function HintsPage() {
+  const { t } = useTranslation();
+
   const items = hintsData.map((hint) => ({
     id: hint.id,
-    title: hint.title,
+    title: t(`hints.${hint.id}.title`, hint.title),
     icon: hint.coat_of_arms,
     content: (
       <div className="space-y-2">
@@ -15,51 +20,41 @@ export default function HintsPage() {
         ))}
       </div>
     ),
-    beginnings: (
+    beginnings: hint.beginnings?.length ? (
       <div className="space-y-2">
-        {hint.beginnings?.map((paragraph, i) => (
+        {hint.beginnings.map((paragraph, i) => (
           <p key={i} className="text-sm leading-relaxed">
             {paragraph}
           </p>
         ))}
       </div>
-    ),
+    ) : undefined,
   }));
+
+  const tips = t("hints.list", { returnObjects: true }) as string[];
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="custom-header text-4xl font-bold my-6 text-center">
-        Hints
+        {t("hints.title")}
       </h1>
-      <p className="text-lg mb-4 text-center">
-        {/*Here you will find tips and tricks to improve your gameplay.*/}
-        Здесь вы найдёте советы и хитрости, чтобы улучшить свою игру.
-      </p>
-      {/*        <li>Tip 1: Always plan your moves ahead.</li>
-        <li>Tip 2: Understand your opponent's strategy.</li>
-        <li>Tip 3: Use your resources wisely.</li>*/}
-      {/*<ul className="list-disc list-inside">
-        
-        <li>Совет 1: Следите за снабжением.</li>
-        <li>
-          Совет 2: Не забывайте о дипломатии. Можно добиться целей меньшей
-          кровью.
-        </li>
-        <li>Совет 3: Планируйте ходы заранее и наперёд.</li>
-      </ul>*/}
+      <p className="text-lg mb-4 text-center">{t("hints.intro")}</p>
       <ul className="space-y-4 max-w-2xl mx-auto">
-        <li className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center">
-          <strong>Совет 1:</strong> Следите за снабжением.
-        </li>
-        <li className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center">
-          <strong>Совет 2:</strong> Не забывайте о дипломатии. Можно добиться
-          целей меньшей кровью.
-        </li>
-        <li className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center">
-          <strong>Совет 3:</strong> Планируйте ходы заранее и наперёд.
-        </li>
+        {tips.map((tip, index) => (
+          <li
+            key={index}
+            className="border-2 border-gray-600 bg-black/20 rounded-xl p-4 text-white shadow-md text-center"
+          >
+            <strong>
+              {t("hints.tip")} {index + 1}:
+            </strong>
+            {" " + tip}
+          </li>
+        ))}
       </ul>
+
       <br />
+
       <Accordion items={items} />
     </div>
   );

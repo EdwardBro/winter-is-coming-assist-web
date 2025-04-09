@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ReactNode, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 interface AccordionItem {
   id: number | string;
@@ -15,6 +16,7 @@ interface AccordionProps {
 }
 
 export default function Accordion({ items }: AccordionProps) {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -73,14 +75,16 @@ export default function Accordion({ items }: AccordionProps) {
               <div className="text-gray-900 space-y-4 overflow-y-auto max-h-[40vh] pr-2">
                 {item.content && (
                   <div>
-                    <h3 className="text-lg font-bold mb-1">Краткий обзор</h3>
+                    <h3 className="text-lg font-bold mb-1">
+                      {t("hints.overview")}
+                    </h3>
                     <div>{item.content}</div>
                   </div>
                 )}
                 {item.beginnings && (
                   <div>
                     <h3 className="text-lg font-bold mt-4 mb-1">
-                      Советы по началу игры
+                      {t("hints.beginnings")}
                     </h3>
                     <div>{item.beginnings}</div>
                   </div>
