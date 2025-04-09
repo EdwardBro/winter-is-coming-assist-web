@@ -129,8 +129,8 @@ const NavBar = () => {
   return (
     <header className="bg-gray-800 text-white">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="text-sm font-bold ">
-          <Link href="/" className=" text-lg auto-wrap">
+        <div className=" font-bold ">
+          <Link href="/" className="mx-3 text-md auto-wrap">
             {t("appTitle")}
           </Link>
         </div>

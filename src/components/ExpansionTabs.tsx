@@ -5,32 +5,27 @@ import React from "react";
 interface ExpansionTabsProps {
   selected: string;
   onSelect: (expansion: string) => void;
+  labels: { [key: string]: string };
 }
 
 const ExpansionTabs: React.FC<ExpansionTabsProps> = ({
   selected,
   onSelect,
+  labels,
 }) => {
-  const expansionNames = [
-    "BASE",
-    "MOTHER OF DRAGONS",
-    "A FEAST FOR CROWS",
-    "A DANCE WITH DRAGONS",
-  ];
-
   return (
     <div className="flex gap-3 mb-8 justify-center flex-wrap">
-      {expansionNames.map((name) => (
+      {Object.keys(labels).map((key) => (
         <button
-          key={name}
-          onClick={() => onSelect(name)}
+          key={key}
+          onClick={() => onSelect(key)}
           className={`px-2 py-1 text-sm border rounded transition hover:bg-gray-200 hover:text-gray-600 ${
-            selected === name
-              ? "bg-blue-500 text-white"
-              : "bg-gray-900 text-gray-300"
+            selected === key
+              ? "bg-gray-500 text-white"
+              : "bg-gray-900 text-gray-300 hover:bg-gray-700"
           }`}
         >
-          {name}
+          {labels[key]}
         </button>
       ))}
     </div>

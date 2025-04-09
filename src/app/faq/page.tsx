@@ -1,33 +1,33 @@
 "use client";
 
-/*import CategoryTabs from "@/components/faq/CategoryTabs";*/
-/*import FAQItemComponent from "@/components/faq/FAQItem";*/
+import CategoryTabs from "@/components/faq/CategoryTabs";
+import FAQItemComponent from "@/components/faq/FAQItem";
 import SearchBar from "@/components/faq/SearchBar";
 import { useTranslation } from "react-i18next";
-/*import faqData from "@/data/faq.json";*/
-import React, { useState } from "react";
+import { faqData } from "@/data/faq";
+import { useState } from "react";
 /*import { useSwipeable } from "react-swipeable";*/
 
 export default function FAQPage() {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const language = i18n.language as "en" | "ru";
 
   const [query, setQuery] = useState("");
-  /*  const categories = ["All", "General", "Gameplay", "PWA"];*/
-  /*  const [selectedCategory, setSelectedCategory] = useState("All");*/
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  /*  const currentFaqData = faqData[language] || [];*/
+  const localizedData = faqData[language];
+  const { items, categories } = localizedData;
 
   // Filter FAQ items by search query and selected category.
-  /*  const filteredFaq = currentFaqData.filter((item) => {
-    return (
+  const filteredFaq = items.filter((item) => {
+    const matchesQuery =
       item.question.toLowerCase().includes(query.toLowerCase()) ||
-      item.answer.toLowerCase().includes(query.toLowerCase())
-          const matchesCategory =
-      selectedCategory === "All" || item.category === selectedCategory;
+      item.answer.toLowerCase().includes(query.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "all" || item.category === selectedCategory;
+
     return matchesQuery && matchesCategory;
-          return matchesQuery;
-    );
-  });*/
+  });
 
   // Set up swipe handlers on the FAQ list container.
   /*  const selectedIndex = categories.indexOf(selectedCategory);*/
@@ -59,16 +59,16 @@ export default function FAQPage() {
         />
       </div>
 
-      {/*      <div className="max-w-xl mx-auto mb-6">
+      <div className="max-w-xl mx-auto mb-6">
         <CategoryTabs
-          categories={categories}
+          categories={Object.values(categories)}
           selectedCategory={selectedCategory}
           onSelect={setSelectedCategory}
         />
-      </div>*/}
+      </div>
 
       <div className="max-w-2xl mx-auto space-y-4">
-        {/*        {filteredFaq.length > 0 ? (
+        {filteredFaq.length > 0 ? (
           filteredFaq.map((item, index) => (
             <FAQItemComponent key={index} item={item} />
           ))
@@ -76,10 +76,7 @@ export default function FAQPage() {
           <p className="text-center text-gray-500">
             {t("faq.noResults", "No results found.")}
           </p>
-        )}*/}
-        <p className="text-center text-gray-500">
-          {t("faq.noResults", "No results found.")}
-        </p>
+        )}
       </div>
     </div>
   );

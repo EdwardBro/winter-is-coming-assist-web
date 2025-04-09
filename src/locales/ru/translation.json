@@ -36,6 +36,12 @@
     "title": "Правила",
     "loading": "Загрузка PDF правил...",
     "error": "Правила не найдены",
-    "page": "Страница"
+    "page": "Страница",
+    "expansions": {
+      "BASE": "Базовая игра",
+      "MOTHER OF DRAGONS": "Мать драконов",
+      "A FEAST FOR CROWS": "Пир для воронов",
+      "A DANCE WITH DRAGONS": "Танец с драконами"
+    }
   }
 }

@@ -33,6 +33,12 @@
     "title": "Rules",
     "loading": "Loading PDF file...",
     "error": "Failed to load PDF",
-    "page": "Page"
+    "page": "Page",
+    "expansions": {
+      "BASE": "Base Game",
+      "MOTHER OF DRAGONS": "Mother of Dragons",
+      "A FEAST FOR CROWS": "A Feast for Crows",
+      "A DANCE WITH DRAGONS": "A Dance with Dragons"
+    }
   }
 }

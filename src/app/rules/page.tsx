@@ -5,6 +5,7 @@ import ExpansionTabs from "@/components/ExpansionTabs";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { expansionMapping } from "@/data/expansionMap";
 
 const PDFViewer = dynamic(() => import("@/components/PDFViewer"), {
   ssr: false,
@@ -14,13 +15,6 @@ const PDFViewer = dynamic(() => import("@/components/PDFViewer"), {
     </div>
   ),
 });
-
-const expansionMapping: { [key: string]: string } = {
-  BASE: "rules",
-  "MOTHER OF DRAGONS": "Mother",
-  "A FEAST FOR CROWS": "Crows",
-  "A DANCE WITH DRAGONS": "Dance",
-};
 
 export default function RulesPage() {
   const { i18n, t } = useTranslation();
@@ -55,6 +49,11 @@ export default function RulesPage() {
       <ExpansionTabs
         selected={selectedExpansion}
         onSelect={setSelectedExpansion}
+        labels={
+          t("rules.expansions", { returnObjects: true }) as {
+            [key: string]: string;
+          }
+        }
       />
       <div className="w-full overflow-hidden">
         <PDFViewer

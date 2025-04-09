@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { useSwipeable } from "react-swipeable";
 
 interface CategoryTabsProps {
-  categories: string[];
+  categories: { [key: string]: string };
   selectedCategory: string;
   onSelect: (category: string) => void;
 }
@@ -14,9 +14,9 @@ const CategoryTabs: FC<CategoryTabsProps> = ({
   selectedCategory,
   onSelect,
 }) => {
-  const selectedIndex = categories.findIndex((cat) => cat === selectedCategory);
+  /*const selectedIndex = categories.findIndex((cat) => cat === selectedCategory);*/
 
-  const handlers = useSwipeable({
+  /*  const handlers = useSwipeable({
     onSwipedLeft: () => {
       if (selectedIndex < categories.length - 1) {
         onSelect(categories[selectedIndex + 1]);
@@ -28,25 +28,25 @@ const CategoryTabs: FC<CategoryTabsProps> = ({
       }
     },
     trackMouse: true, // позволяет тестировать свайп с мыши на ПК
-  });
+  });*/
 
   return (
     <div
-      {...handlers}
+      /*{...handlers}*/
       className="flex gap-3 mb-8 justify-center flex-wrap border-b border-gray-300"
     >
-      {categories.map((cat) => (
+      {Object.entries(categories).map(([key, label]) => (
         <button
-          key={cat}
-          onClick={() => onSelect(cat)}
+          key={key}
+          onClick={() => onSelect(key)}
           className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 focus:outline-none
             ${
-              selectedCategory === cat
+              selectedCategory === key
                 ? "border-blue-500 text-white"
                 : "border-transparent text-gray-400 hover:text-blue-100 hover:semi-bold semi-bold"
             }`}
         >
-          {cat}
+          {label}
         </button>
       ))}
     </div>
