@@ -1,62 +1,31 @@
 import { descriptions } from "@/data/descriptions";
+import { houses } from "@/data/houses";
+import { imageMap } from "@/data/imageMap";
 import { SimpleCard } from "@/types";
 
-interface HouseInput {
-  faction: string;
-  cards: {
-    id: string;
-    title: string;
-  }[];
-}
-
-const extensions = ["webp", "jpg", "png", "jpeg", "gif"];
-
-/**
- * Пытается найти существующий файл среди расширений
- */
-const findImage = async (cardId: string): Promise<string | null> => {
-  for (const ext of extensions) {
-    const path = `/assets/cards/house_cards/${cardId}_card_ru.${ext}`;
-
-    try {
-      const res = await fetch(path, { method: "HEAD" });
-      if (res.ok) return path;
-    } catch (e) {
-      console.error(e); // Если fetch упал, пропускаем
-    }
-  }
-
-  // Фолбэк
-  console.warn(`Image not found for card: ${cardId}`);
-  return null;
-};
-
-export const generateHouseCards = async (
-  houses: HouseInput[]
-): Promise<SimpleCard[]> => {
-  const cardTasks: Promise<SimpleCard | null>[] = [];
+export const generateHouseCards = (): SimpleCard[] => {
+  const cards: SimpleCard[] = [];
 
   for (const house of houses) {
     for (const card of house.cards) {
-      const task = (async (): Promise<SimpleCard | null> => {
-        const imagePath = await findImage(card.id);
-        if (!imagePath) return null;
+      const image = imageMap[card.id];
 
-        return {
-          id: card.id,
-          title: card.title,
-          image: imagePath,
-          description:
-            descriptions[card.id] ??
-            `Карта ${card.title}, принадлежащая дому ${house.faction}.`,
-          faction: house.faction,
-        };
-      })();
+      if (!image) {
+        console.warn(`⚠️ No image for card: ${card.id}`);
+        continue;
+      }
 
-      cardTasks.push(task);
+      cards.push({
+        id: card.id,
+        title: card.title,
+        image,
+        description:
+          descriptions[card.id] ??
+          `Карта ${card.title}, принадлежащая дому ${house.name}`,
+        faction: house.id,
+      });
     }
   }
 
-  const results = await Promise.all(cardTasks);
-  return results.filter((card): card is SimpleCard => card !== null);
+  return cards;
 };

@@ -70,5 +70,13 @@
     },
     "overview": "Overview",
     "beginnings": "Starting Tips"
+  },
+  "extra": {
+    "title": "Extra",
+    "description": "Here you will find info about houses."
+  },
+  "cards": {
+    "title": "Cards",
+    "description": "“I have heard rumors that you can find character cards and interesting facts about them here.” - Lord Varys"
   }
 }

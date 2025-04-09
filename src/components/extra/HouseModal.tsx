@@ -54,7 +54,7 @@ const HouseModal: React.FC<HouseModalProps> = ({ house, onClose }) => {
           <span className="font-semibold">Описание:</span> {house.description}
         </p>
         <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-800 transition"
           onClick={onClose}
         >
           Закрыть
