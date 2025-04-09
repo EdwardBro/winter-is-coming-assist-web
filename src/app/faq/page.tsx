@@ -61,7 +61,7 @@ export default function FAQPage() {
 
       <div className="max-w-xl mx-auto mb-6">
         <CategoryTabs
-          categories={Object.values(categories)}
+          categories={categories}
           selectedCategory={selectedCategory}
           onSelect={setSelectedCategory}
         />
