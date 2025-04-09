@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC } from "react";
-import { useSwipeable } from "react-swipeable";
+/*import { useSwipeable } from "react-swipeable";*/
 
 interface CategoryTabsProps {
   categories: { [key: string]: string };
