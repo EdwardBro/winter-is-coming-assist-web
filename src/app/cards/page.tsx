@@ -5,7 +5,6 @@ import { SimpleCard } from "@/types";
 import { useState, useEffect } from "react";
 import { generateHouseCards } from "@/utils/generateHouseCards";
 import Image from "next/image";
-import houseCards from "@/data/houseCards";
 import { useTranslation } from "react-i18next";
 
 const CardsPage: React.FC = () => {
