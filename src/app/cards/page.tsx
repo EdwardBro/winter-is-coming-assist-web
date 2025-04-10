@@ -23,7 +23,7 @@ const CardsPage: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="custom-header text-4xl font-bold my-4 text-center">
+      <h1 className="custom-header text-3xl font-bold my-4 text-center">
         {t("cards.title")}
       </h1>
       <p className="text-lg mb-6 text-center">{t("cards.description")}</p>
