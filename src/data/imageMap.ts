@@ -37,7 +37,7 @@ export const imageMap: Record<string, string> = {
   mace: "/assets/cards/house_cards/mace_card_ru.png",
   margaery: "/assets/cards/house_cards/margaery_card_ru.png",
   loras: "/assets/cards/house_cards/loras_card_ru.png",
-  olenna: "/assets/cards/house_cards/olenna_card_ru.jpg",
+  olenna: "/assets/cards/house_cards/olenna_card_ru.png",
   randyll: "/assets/cards/house_cards/randyll_card_ru.png",
   garlan: "/assets/cards/house_cards/garlan_card_ru.png",
   florent: "/assets/cards/house_cards/florent_card_ru.png",
