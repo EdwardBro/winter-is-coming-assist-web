@@ -68,7 +68,7 @@ export const houses: HouseData[] = [
       { id: "melisandre", title: "Мелисандра" },
       { id: "renly", title: "Ренли Баратеон" },
       { id: "brienne", title: "Бриенна Тарт" },
-      { id: "salador", title: "Саладор Саан" },
+      { id: "sallador", title: "Салладор Саан" },
       { id: "patchface", title: "Пестряк" },
     ],
     description:
@@ -131,7 +131,27 @@ export const houses: HouseData[] = [
     description:
       "Дом Мартелл — один из могущественных домов Семи Королевств. Они правят Дорном.",
   },
-  // Add more houses...
+  // House cards from the "Feast for crows" expansion:
+
+  {
+    id: "arryn",
+    name: "Дом Аррен",
+    seat: "Орлиное Гнездо",
+    leader: "Лиза Аррен, регент при сыне Роберте", // Example leader; adjust as needed
+    motto: "As High as Honor",
+    shieldImage: "/cards/arryn.png",
+    cards: [
+      { id: "lysa", title: "Лиза Аррен" },
+      { id: "petyr", title: "Петир Бейлиш" },
+      /*      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },*/
+    ],
+    description:
+      "Дом Аррен — один из могущественных домов Семи Королевств. Они правят Долиной.",
+  },
 
   // Houses from the "Mother of Dragons" expansion:
   {
@@ -142,13 +162,13 @@ export const houses: HouseData[] = [
     motto: "As High as Honor",
     shieldImage: "/cards/arryn.png",
     cards: [
-      { id: "doran", title: "Доран Мартелл" },
-      { id: "oberyn", title: "Оберин Красная Гадюка Мартелл" },
-      { id: "arianne", title: "Арианна Мартелл" },
-      { id: "darkstar", title: "Герольд Тёмная Звезда" },
-      { id: "areo", title: "Арео Хотах" },
-      { id: "nymeria", title: "Нимерия Санд" },
-      { id: "obara", title: "Обара Сенд" },
+      /*{ id: "lysa", title: "Лиза Аррен" },
+      { id: "petyr", title: "Петир Бейлиш" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },*/
     ],
     description:
       "Дом Аррен — один из могущественных домов Семи Королевств. Они правят Долиной.",
@@ -161,13 +181,13 @@ export const houses: HouseData[] = [
     motto: "Fire and Blood",
     shieldImage: "/cards/targaryen.png",
     cards: [
-      { id: "doran", title: "Доран Мартелл" },
-      { id: "oberyn", title: "Оберин Красная Гадюка Мартелл" },
-      { id: "arianne", title: "Арианна Мартелл" },
-      { id: "darkstar", title: "Герольд Тёмная Звезда" },
-      { id: "areo", title: "Арео Хотах" },
-      { id: "nymeria", title: "Нимерия Санд" },
-      { id: "obara", title: "Обара Сенд" },
+      /*      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },
+      { id: "arianne", title: "лоханка с супом" },*/
     ],
     description:
       "Дом Таргариен — один из могущественных домов Семи Королевств. Они правили Семью Королевствами до свержения. Ныне последние представители дома в бегах за Узким морем, в Эссосе.",

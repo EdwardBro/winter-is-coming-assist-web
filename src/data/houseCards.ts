@@ -1,5 +1,3 @@
-/*import { HouseCard } from "@/types";*/
-
 const houseCards = [
   {
     faction: "lannister",
@@ -17,12 +15,12 @@ const houseCards = [
     faction: "stark",
     cards: [
       { id: "ned", title: "Эддард Старк" },
-      { id: "catelyn", title: "Кейтилин Старк" },
       { id: "robb", title: "Робб Старк" },
       { id: "roose", title: "Рус Болтон" },
       { id: "brynden", title: "Бринден Чёрная Рыба Талли" },
       { id: "rodrik", title: "Сир Родрик Кассель" },
       { id: "umber", title: "Большой Джон Амбер" },
+      { id: "catelyn", title: "Кейтилин Старк" },
     ],
   },
   {
@@ -75,51 +73,4 @@ const houseCards = [
   },
 ];
 
-/*const houseCards = generateHouseCards(houses);*/
-
 export default houseCards;
-
-/*const houseCards: HouseCard[] = [
-  {
-    id: "cersei",
-    title: "Серсея Ланнистер",
-    image: "/cards/cersei_card_ru.jpg", // This image exists in public/cards/
-    description: "Карта Серсеи Ланнистер при управлении домом Ланнистеров.",
-    faction: "lannister",
-  },
-  {
-    id: "catelyn",
-    title: "Кейтилин Старк",
-    image: "/cards/catelyn_card_ru.jpg",
-    description: "Карта Кейтилин Старк в поддержке Дома Старков.",
-    faction: "stark",
-  },
-  {
-    id: "queen_of_thorns",
-    title: "Королева шипов",
-    image: "/cards/queen_of_thorns_card_ru.jpg",
-    description: "Карта Королевы шипов в поддержке Дома Тирелл.",
-    faction: "tyrell",
-  },
-  {
-    id: "tywin",
-    title: "Тайвин Ланнистер",
-    image: "/cards/tywin_card_ru.jpg",
-    description: "Карта Тайвина Ланнистера при управлении домом Ланнистеров.",
-    faction: "lannister",
-  },
-  {
-    id: "robb",
-    title: "Робб Старк",
-    image: "/cards/robb_card_ru.jpg",
-    description: "Карта Робба Старка в поддержке Дома Старков.",
-    faction: "stark",
-  },
-  {
-    id: "margaery",
-    title: "Маргери Тирелл",
-    image: "/cards/margaery_card_ru.jpg",
-    description: "Карта Маргери Тирелл в поддержке Дома Тирелл.",
-    faction: "tyrell",
-  },
-];*/

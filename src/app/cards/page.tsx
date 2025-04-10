@@ -15,7 +15,7 @@ const CardsPage: React.FC = () => {
 
   useEffect(() => {
     const loadCards = async () => {
-      const generated = await generateHouseCards(houseCards);
+      const generated = await generateHouseCards();
       setCards(generated);
     };
 
@@ -29,24 +29,28 @@ const CardsPage: React.FC = () => {
       </h1>
       <p className="text-lg mb-6 text-center">{t("cards.description")}</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-9">
-        {cards.map((card, index) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-9">
+        {cards.map((card) => (
           <div
             key={card.id}
-            className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
+            className="cursor-pointer"
             onClick={() => setSelectedCard(card)}
           >
-            <Image
-              src={card.image}
-              alt={card.title}
-              title={card.title}
-              loading="lazy"
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 300px"
-              fill
-            />
-            <div className="p-4 bg-gray-900">
-              <h2 className="text-xl font-bold text-white">{card.title}</h2>
+            <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer">
+              <Image
+                src={card.image}
+                alt={card.title}
+                title={card.title}
+                loading="lazy"
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 300px"
+                fill
+              />
+            </div>
+            <div className="p-2 bg-gray-900 rounded-b-lg">
+              <h2 className="text-xl font-bold text-white text-center">
+                {card.title}
+              </h2>
             </div>
           </div>
         ))}
