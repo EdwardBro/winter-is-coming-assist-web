@@ -23,7 +23,7 @@ export default function Home() {
 
           <Link
             href="/rules"
-            className="bg-gradient-to-r from-red-900 via-gray to-gray-800 text-white text-2xl font-bold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-red-900 to-gray-800 text-white text-2xl font-bold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
           >
             {t("home.button")}
           </Link>

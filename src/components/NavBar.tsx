@@ -104,7 +104,7 @@ const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => (
               key={link.href}
               item={link}
               onClick={onClose}
-              className="text-lg text-gray-800 hover:outline"
+              className="text-lg text-black hover:text-blue-600 transition-colors"
             />
           ))}
         </nav>
