@@ -63,7 +63,7 @@ const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
               width={800}
               height={600}
               className="w-full object-contain rounded-xl"
-              /*              loading="lazy"*/
+              loading="lazy"
             />
           </div>
         </div>
