@@ -9,7 +9,9 @@ export default function HintsPage() {
 
   const items = hintsData.map((hint) => ({
     id: hint.id,
-    title: t(`hints.${hint.id}.title`, hint.title),
+    title: t(`hints.${hint.id}.title`, {
+      defaultValue: hint.title,
+    }),
     icon: hint.coat_of_arms,
     content: (
       <div className="space-y-2">
