@@ -78,5 +78,38 @@
   "cards": {
     "title": "Cards",
     "description": "“I have heard rumors that you can find character cards and interesting facts about them here.” - Lord Varys"
+  },
+"faq": {
+    "title": "FAQ",
+    "description": "Frequently Asked Questions and Answers",
+    "categories": {
+      "general": "General",
+      "gameplay": "Gameplay",
+      "ports": "Ports",
+      "hire": "Hire",
+      "special_tokens": "Special Tokens"
+    },
+    "items": [
+      {
+        "question": "How to use ports?",
+        "answer": "A port is a special area connecting land and sea. The owner of the port is considered to be the House that controls the land adjacent to the port. It can hold a maximum of 3 ships. The port can be used to land armies between sea and land, as well as to attack an adjacent sea or support on land and sea.",
+        "category": "Ports"
+      },
+      {
+        "question": "What is the optimal strategy?",
+        "answer": "The optimal strategy depends on your playstyle and the current game state.",
+        "category": "Gameplay"
+      },
+      {
+        "question": "How to hire troops?",
+        "answer": "Troops can be hired in any area that has a CASTLE or STRONGHOLD. STRONGHOLD = 2 muster points, CASTLE = 1 muster point. These points only work in the area where the corresponding structure is located! Footman = 1 pt, Knight = 2 pts, Ship = 1 pt, Siege Engine = 2 pts. Upgrading a footman unit to a knight OR siege engine = 1 pt.",
+        "category": "Hire"
+      },
+      {
+        "question": "What does the Messenger Raven do?",
+        "answer": "The raven during the order reveal phase (AND ONLY THEN) allows you to look at a card from the Wildling deck. OR you can replace one of YOUR orders on the table with an order from the RESERVE. This allows you to better plan your actions.",
+        "category": "Special Tokens"
+      }
+    ]
   }
 }

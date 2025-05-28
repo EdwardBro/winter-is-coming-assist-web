@@ -20,6 +20,8 @@ if (!i18n.isInitialized) {
         interpolation: {
           escapeValue: false,
         },
+        returnObjects: true,
+        defaultNS: 'translation'
       });
   } else {
     i18n.use(initReactI18next).init({
@@ -32,6 +34,8 @@ if (!i18n.isInitialized) {
       interpolation: {
         escapeValue: false,
       },
+      returnObjects: true,
+      defaultNS: 'translation'
     });
   }
 }

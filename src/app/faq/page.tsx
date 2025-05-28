@@ -4,27 +4,59 @@ import CategoryTabs from "@/components/faq/CategoryTabs";
 import FAQItemComponent from "@/components/faq/FAQItem";
 import SearchBar from "@/components/faq/SearchBar";
 import { useTranslation } from "react-i18next";
-import { faqData } from "@/data/faq";
 import { useState } from "react";
 /*import { useSwipeable } from "react-swipeable";*/
 
+interface FAQItem {
+  question: string;
+  answer: string;
+  category: string;
+}
+
+interface FAQData {
+  title: string;
+  description: string;
+  categories: {
+    [key: string]: string;
+  };
+  items: FAQItem[];
+}
+
 export default function FAQPage() {
-  const { i18n, t } = useTranslation();
-  const language = i18n.language as "en" | "ru";
+    const { i18n, t } = useTranslation();
+  
+  // Добавим проверку на загрузку переводов
+  if (!i18n.isInitialized) {
+    return <div>Loading...</div>;
+  }
+
+const faqData = {
+    title: t('faq.title', 'FAQ'),
+    description: t('faq.description', 'Frequently Asked Questions'),
+    categories: {
+      general: t('faq.categories.general', 'Общее'),
+      gameplay: t('faq.categories.gameplay', 'Геймплей'),
+      ports: t('faq.categories.ports', 'Порты'),
+      hire: t('faq.categories.hire', 'Призыв'),
+      special_tokens: t('faq.categories.special_tokens', 'Специальные жетоны')
+    },
+    items: Array.isArray(t('faq.items', { returnObjects: true })) 
+      ? t('faq.items', { returnObjects: true }) 
+      : []
+  } as FAQData;
 
   const [query, setQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const localizedData = faqData[language];
-  const { items, categories } = localizedData;
-
+  const [selectedCategory, setSelectedCategory] = useState("general");
   // Filter FAQ items by search query and selected category.
-  const filteredFaq = items.filter((item) => {
+
+  const filteredFaq = faqData.items.filter((item: FAQItem) => {
     const matchesQuery =
       item.question.toLowerCase().includes(query.toLowerCase()) ||
       item.answer.toLowerCase().includes(query.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "all" || item.category === selectedCategory;
+    
+    // Изменяем логику сравнения категорий
+    const matchesCategory = selectedCategory === "general" || 
+      item.category === faqData.categories[selectedCategory];
 
     return matchesQuery && matchesCategory;
   });
@@ -51,17 +83,17 @@ export default function FAQPage() {
         {t("faq.title", "FAQ")}
       </h1>
 
-      <div className="max-w-xl mx-auto mb-6">
+{/*      <div className="max-w-xl mx-auto mb-6">
         <SearchBar
           query={query}
           onChange={setQuery}
           placeholder={t("faq.search", "Search FAQs...")}
         />
-      </div>
+      </div>*/}
 
       <div className="max-w-xl mx-auto mb-6">
         <CategoryTabs
-          categories={categories}
+          categories={faqData.categories}
           selectedCategory={selectedCategory}
           onSelect={setSelectedCategory}
         />
@@ -69,7 +101,7 @@ export default function FAQPage() {
 
       <div className="max-w-2xl mx-auto space-y-4">
         {filteredFaq.length > 0 ? (
-          filteredFaq.map((item, index) => (
+          filteredFaq.map((item: FAQItem, index: number) => (
             <FAQItemComponent key={index} item={item} />
           ))
         ) : (

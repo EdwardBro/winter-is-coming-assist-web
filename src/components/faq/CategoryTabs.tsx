@@ -4,7 +4,9 @@ import React, { FC } from "react";
 /*import { useSwipeable } from "react-swipeable";*/
 
 interface CategoryTabsProps {
-  categories: { [key: string]: string };
+  categories: {
+    [key: string]: string;
+  };
   selectedCategory: string;
   onSelect: (category: string) => void;
 }
@@ -42,7 +44,7 @@ const CategoryTabs: FC<CategoryTabsProps> = ({
           className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 focus:outline-none
             ${
               selectedCategory === key
-                ? "border-blue-500 text-white"
+                ? "border-blue-500 text-white-500"
                 : "border-transparent text-gray-400 hover:text-blue-100 hover:semi-bold semi-bold"
             }`}
         >
