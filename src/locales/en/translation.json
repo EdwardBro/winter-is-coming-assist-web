@@ -26,7 +26,8 @@
     }
   },
   "footer": {
-    "rights": "© {{year}} All rights reserved. This app is not affiliated with HBO or Fantasy Flight Games."
+    "rights": "© {{year}} All rights reserved. This app is not affiliated with HBO or Fantasy Flight Games.",
+    "buyMeCoffee": "Support the Developer's Mission :)"
   },
   "appTitle": "Game of Thrones Assist",
   "rules": {
@@ -47,7 +48,7 @@
     "tip": "Tip",
     "list": [
       "Keep an eye on your supply!",
-      "Use diplomacy — you don’t always need war to win.",
+      "Use diplomacy — you don't always need war to win.",
       "Plan several moves ahead."
     ],
     "1": {

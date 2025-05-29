@@ -26,7 +26,8 @@
     }
   },
   "footer": {
-    "rights": "© {{year}} Все права защищены. Приложение не связано с HBO или Fantasy Flight Games."
+    "rights": "© {{year}} Все права защищены. Приложение не связано с HBO или Fantasy Flight Games.",
+    "buyMeCoffee": "На кофе разработчику с:"
   },
   "appTitle": "Game of Thrones Assist",
   "rules": {
