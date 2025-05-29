@@ -109,6 +109,16 @@
         "question": "What does the Messenger Raven do?",
         "answer": "The raven during the order reveal phase (AND ONLY THEN) allows you to look at a card from the Wildling deck. OR you can replace one of YOUR orders on the table with an order from the RESERVE. This allows you to better plan your actions.",
         "category": "Special Tokens"
+      },
+      {
+        "question": "What does the Iron Throne do?",
+        "answer": "The Iron Throne resolves disputed situations in the game. For example, who gets the effects when the Night's Watch and Wildlings have the same number of influence on the track or who will stand on the influence tracks when the stakes are equal.",
+        "category": "Special Tokens"
+      },
+      {
+        "question": "What does the Valyrian Sword do?",
+        "answer": "The Valyrian Sword gives its owner +1 strength in battle, with its participation. Works once per round. With the Mother of Dragons expansion, it also allows you to kill one unit of a player who cannot pay off loans to the Iron Bank.",
+        "category": "Special Tokens"
       }
     ]
   }
