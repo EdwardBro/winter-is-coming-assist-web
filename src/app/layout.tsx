@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import PrefetchPDF from "@/components/PrefetchPDF";
 
 export default function RootLayout({
   children,
@@ -13,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
+        <PrefetchPDF />
         <NavBar />
         <main className="flex-grow">{children}</main>
         <Footer />

@@ -18,7 +18,6 @@ const PDFViewer = dynamic(() => import("@/components/PDFViewer"), {
 
 export default function RulesPage() {
   const { i18n, t } = useTranslation();
-  /*  const [numPages, setNumPages] = useState<number | null>(null);*/
   const [initialPage, setInitialPage] = useState(0);
   const [selectedExpansion, setSelectedExpansion] = useState("BASE");
 
@@ -62,27 +61,6 @@ export default function RulesPage() {
           initialPage={initialPage}
         />
       </div>
-
-      {/*<div className="flex mb-8 justify-center flex-wrap overflow-y-auto">
-        <Document
-          file={pdfFilePath}
-          onLoadSuccess={onDocumentLoadSuccess}
-          loading={
-            <div className="text-center py-16 animate-pulse">
-              <p className="text-lg text-gray-400">{t("rules.loading")}</p>
-            </div>
-          }
-          error={<div>{t("rules.error")}</div>}
-        >
-          <Page
-            key={pageNumber}
-            pageNumber={pageNumber}
-            width={width}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-          />
-        </Document>
-      </div>*/}
     </div>
   );
 }
