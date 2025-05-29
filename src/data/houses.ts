@@ -86,7 +86,7 @@ export const houses: HouseData[] = [
       { id: "asha", title: "Аша Грейджой" },
       { id: "theon", title: "Теон Грейджой" },
       { id: "victarion", title: "Виктарион Грейджой" },
-      { id: "aeron", title: "Эйрон Грейджой" },
+      { id: "aeron", title: "Эйрон Мокроголовый" },
       { id: "dagmer", title: "Дагмер Битый Рот" },
     ],
     description:

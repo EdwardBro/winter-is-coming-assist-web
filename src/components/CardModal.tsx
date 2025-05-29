@@ -3,7 +3,7 @@
 import { SimpleCard } from "@/types";
 import { X } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface CardModalProps {
   card: SimpleCard;
@@ -12,12 +12,19 @@ interface CardModalProps {
 
 // Modal component for displaying a selected card.
 const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
+  const [hasGif, setHasGif] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    // Проверяем наличие gif
+    const gifUrl = `/assets/gifs/${card.id}.gif`;
+    fetch(gifUrl, { method: 'HEAD' })
+      .then(res => setHasGif(res.ok))
+      .catch(() => setHasGif(false));
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [card.id]);
 
   return (
     <div
@@ -39,13 +46,13 @@ const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
         </button>
 
         <div className="overflow-y-auto max-h-[90vh] pt-2 bg-gray-100">
-          <div className="w-full relative aspect-[3/4]">
+          <div className="w-full relative flex justify-center items-center aspect-[3/4]">
             <Image
               src={card.image}
               alt={card.title}
-              width={600}
-              height={800}
-              className="object-cover"
+              width={260}
+              height={360}
+              className="object-cover rounded-lg shadow max-w-[300px] md:max-w-[260px] max-h-[400px] mx-auto"
               /*            onClick={(e) => e.stopPropagation()}*/
               loading="lazy"
             />
@@ -57,14 +64,16 @@ const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
               {card.description}
             </p>
 
-            <Image
-              src={`/assets/gifs/${card.id}.gif`}
-              alt={`Анимация для ${card.title}`}
-              width={800}
-              height={600}
-              className="w-full object-contain rounded-xl"
-              loading="lazy"
-            />
+            {hasGif && (
+              <Image
+                src={`/assets/gifs/${card.id}.gif`}
+                alt={`Анимация для ${card.title}`}
+                width={420}
+                height={420}
+                className="object-contain rounded-xl max-w-[320px] md:max-w-[320px] max-h-[320px] w-full h-auto mx-auto"
+                loading="lazy"
+              />
+            )}
           </div>
         </div>
       </div>
