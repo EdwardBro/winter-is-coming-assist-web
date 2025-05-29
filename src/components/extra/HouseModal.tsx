@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { HouseData } from "@/data/houses";
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { X } from 'lucide-react';
 
 interface HouseModalProps {
   house: HouseData;
@@ -27,7 +27,7 @@ const HouseModal: React.FC<HouseModalProps> = ({ house, onClose }) => {
           onClick={onClose}
           aria-label="Закрыть"
         >
-          <XMarkIcon className="w-6 h-6 text-slate-600" />
+          <X className="w-6 h-6 text-slate-600" />
         </button>
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-3xl font-bold mb-2 text-slate-800 drop-shadow">{house.name}</h2>
