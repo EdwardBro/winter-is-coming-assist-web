@@ -26,32 +26,30 @@ const LanguageSwitcher: FC = () => {
 
   const currentLang = i18n.language;
 
+  const languages = [
+    { code: "en", flag: "🇺🇸", label: "Switch to English" },
+    { code: "ru", flag: "🇷🇺", label: "Переключить на русский" },
+  ];
+
   return (
-    <div className="flex">
-      <button
-        onClick={() => handleSwitch("en")}
-        className={`px-1 border rounded-l-lg hover:bg-gray-200 ${
-          currentLang === "en"
-            ? "bg-blue-500 text-white"
-            : "bg-transparent text-gray-500"
-        }`}
-      >
-        <span role="img" aria-label="US Flag" className="text-3xl">
-          🇺🇸
-        </span>
-      </button>
-      <button
-        onClick={() => handleSwitch("ru")}
-        className={`px-1 border rounded-r-lg hover:bg-gray-200 ${
-          currentLang === "ru"
-            ? "bg-blue-500 text-white"
-            : "bg-transparent text-black"
-        }`}
-      >
-        <span role="img" aria-label="Russian Flag" className="text-3xl">
-          🇷🇺
-        </span>
-      </button>
+    <div className="flex gap-2 items-center">
+      {languages.map(({ code, flag, label }) => (
+        <button
+          key={code}
+          onClick={() => handleSwitch(code)}
+          className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 shadow-md text-2xl
+            focus:outline-none
+            hover:scale-110 hover:shadow-lg focus:scale-110
+            ${
+              currentLang === code
+                ? "bg-blue-300/20 text-white shadow-lg"
+                : "bg-gray-800 text-gray-300"
+            }`}
+          aria-label={label}
+        >
+          <span role="img" aria-label={label}>{flag}</span>
+        </button>
+      ))}
     </div>
   );
 };
@@ -67,14 +65,22 @@ const NavLinkItem: FC<{
   className?: string;
 }> = ({ item, onClick, className = "" }) => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const isActive = router && typeof window !== 'undefined' ? window.location.pathname === item.href : false;
   return (
     <Link
       href={item.href}
       onClick={onClick}
-      className={`relative px-2 py-1 transition-all duration-300 
-        after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 
-        after:bg-blue-400 after:transition-all after:duration-300
-        hover:after:w-full hover:after:left-0 hover:text-blue-400 ${className}`}
+      className={`
+        box-border px-3 py-2 text-xl border-b-2 transition-all duration-300
+        border-transparent text-slate-200
+        hover:border-sky-400 hover:text-sky-400
+        focus:border-sky-400 focus:text-sky-400
+        active:border-sky-400 active:text-sky-400
+        active:bg-slate-700/30
+        ${isActive ? 'border-sky-400 text-sky-400 bg-slate-700/20' : ''}
+        ${className}
+      `}
     >
       {t(`nav.${item.label}`)}
     </Link>
@@ -106,7 +112,7 @@ const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => (
               key={link.href}
               item={link}
               onClick={onClose}
-              className="text-lg text-white hover:text-blue-400 transition-colors"
+              className=""
             />
           ))}
         </nav>
