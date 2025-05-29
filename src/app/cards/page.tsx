@@ -28,39 +28,74 @@ const CardsPage: React.FC = () => {
       </h1>
       <p className="text-lg mb-6 text-center">{t("cards.description")}</p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-9">
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className="cursor-pointer"
-            onClick={() => setSelectedCard(card)}
-          >
-            <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer">
-              <Image
-                src={card.image}
-                alt={card.title}
-                title={card.title}
-                loading="lazy"
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 300px"
-                fill
-              />
-            </div>
-            <div className="p-2 bg-gray-900 rounded-b-lg">
-              <h2 className="text-xl font-bold text-white text-center">
-                {card.title}
-              </h2>
-            </div>
+      <div className="space-y-12">
+        <div>
+          <h2 className="text-2xl font-bold mb-6 text-center text-white">{t("rules.expansions.BASE")}</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {cards.filter(card => card.faction !== "arryn").map((card) => (
+              <div
+                key={card.id}
+                className="cursor-pointer"
+                onClick={() => setSelectedCard(card)}
+              >
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    title={card.title}
+                    loading="lazy"
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 200px"
+                    fill
+                  />
+                </div>
+                <div className="p-2 bg-gray-900 rounded-b-lg">
+                  <h2 className="text-lg font-bold text-white text-center">
+                    {card.title}
+                  </h2>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
 
-        {selectedCard && (
-          <CardModal
-            card={selectedCard}
-            onClose={() => setSelectedCard(null)}
-          />
-        )}
+        <div>
+          <h2 className="text-2xl font-bold mb-6 text-center text-white">{t("rules.expansions.A FEAST FOR CROWS")}</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {cards.filter(card => card.faction === "arryn").map((card) => (
+              <div
+                key={card.id}
+                className="cursor-pointer"
+                onClick={() => setSelectedCard(card)}
+              >
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    title={card.title}
+                    loading="lazy"
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 200px"
+                    fill
+                  />
+                </div>
+                <div className="p-2 bg-gray-900 rounded-b-lg">
+                  <h2 className="text-lg font-bold text-white text-center">
+                    {card.title}
+                  </h2>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {selectedCard && (
+        <CardModal
+          card={selectedCard}
+          onClose={() => setSelectedCard(null)}
+        />
+      )}
     </div>
   );
 };

@@ -34,7 +34,7 @@ const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
       role="dialog"
     >
       <div
-        className="overflow-hidden relative w-[90vw] max-w-3xl max-h-[90vh] bg-blue-200 rounded-2xl shadow-lg transform transition-all duration-300 scale-100"
+        className="overflow-hidden relative w-[90vw] max-w-4xl max-h-[90vh] bg-blue-200 rounded-2xl shadow-lg transform transition-all duration-300 scale-100"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -46,14 +46,13 @@ const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
         </button>
 
         <div className="overflow-y-auto max-h-[90vh] pt-2 bg-gray-100">
-          <div className="w-full relative flex justify-center items-center aspect-[3/4]">
+          <div className="w-full relative flex justify-center items-center">
             <Image
               src={card.image}
               alt={card.title}
-              width={260}
-              height={360}
-              className="object-cover rounded-lg shadow max-w-[300px] md:max-w-[260px] max-h-[400px] mx-auto"
-              /*            onClick={(e) => e.stopPropagation()}*/
+              width={500}
+              height={700}
+              className="object-contain rounded-lg shadow w-auto h-auto max-w-[500px] max-h-[700px] mx-auto"
               loading="lazy"
             />
           </div>
@@ -65,14 +64,17 @@ const CardModal: React.FC<CardModalProps> = ({ card, onClose }) => {
             </p>
 
             {hasGif && (
-              <Image
-                src={`/assets/gifs/${card.id}.gif`}
-                alt={`Анимация для ${card.title}`}
-                width={420}
-                height={420}
-                className="object-contain rounded-xl max-w-[320px] md:max-w-[320px] max-h-[320px] w-full h-auto mx-auto"
-                loading="lazy"
-              />
+              <div className="w-full flex justify-center">
+                <Image
+                  src={`/assets/gifs/${card.id}.gif`}
+                  alt={`Анимация для ${card.title}`}
+                  width={600}
+                  height={600}
+                  className="object-contain rounded-xl w-auto h-auto max-w-[90%] max-h-[600px] mx-auto"
+                  loading="lazy"
+                  unoptimized
+                />
+              </div>
             )}
           </div>
         </div>
