@@ -83,13 +83,13 @@ const faqData = {
         {t("faq.title", "FAQ")}
       </h1>
 
-{/*      <div className="max-w-xl mx-auto mb-6">
+      <div className="max-w-xl mx-auto mb-6">
         <SearchBar
           query={query}
           onChange={setQuery}
           placeholder={t("faq.search", "Search FAQs...")}
         />
-      </div>*/}
+      </div>
 
       <div className="max-w-xl mx-auto mb-6">
         <CategoryTabs
