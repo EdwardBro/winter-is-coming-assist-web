@@ -21,7 +21,7 @@ export default function PrefetchPDF() {
 
   useEffect(() => {
     pdfFiles[lang].forEach((url) => {
-      fetch(url, { method: "GET" });
+      fetch(url, { method: "GET", cache: 'force-cache' });
     });
   }, [lang]);
 

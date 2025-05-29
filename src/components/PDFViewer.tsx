@@ -34,8 +34,8 @@ const PDFViewer: FC<PDFViewerProps> = ({ fileUrl, initialPage }) => {
   };
 
   return (
-    <div className="flex flex-col w-screen h-[calc(100vh-280px)] overflow-hidden">
-      <div className="flex overflow-hidden">
+    <div className="flex flex-col w-full h-[calc(100vh-260px)] overflow-hidden">
+      <div className="flex overflow-hidden justify-center">
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
           <Viewer
             fileUrl={fileUrl}
@@ -46,7 +46,7 @@ const PDFViewer: FC<PDFViewerProps> = ({ fileUrl, initialPage }) => {
             onPageChange={handlePageChange}
             scrollMode={ScrollMode.Page}
             renderLoader={() => (
-              <div className="text-center py-10 text-gray-500 animate-pulse">
+              <div className="text-center py-10 text-gray-500">
                 {t("rules.loading")}
               </div>
             )}
