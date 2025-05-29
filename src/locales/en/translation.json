@@ -32,7 +32,7 @@
   "rules": {
     "title": "Rules",
     "loading": "Loading PDF file...",
-    "error": "Failed to load PDF",
+    "error": "Failed to load PDF or they don't exist",
     "page": "Page",
     "expansions": {
       "BASE": "Base Game",
