@@ -84,7 +84,7 @@ const NavLinkItem: FC<{
 };
 
 const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
-  const { t } = useTranslation();
+  /*const { t } = useTranslation();*/
   
   return (
     <div
