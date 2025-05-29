@@ -84,9 +84,11 @@ const NavLinkItem: FC<{
 };
 
 const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
+  
   return (
     <div
-      className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-40 transition-opacity duration-300 md:hidden ${
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={onClose}
@@ -113,7 +115,7 @@ const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
               />
             ))}
             <div className="mt-4">
-              <DonationButton compact />
+              <DonationButton onClick={onClose} compact />
             </div>
           </nav>
         </div>
@@ -121,14 +123,6 @@ const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
-
-const DesktopNav: FC = () => (
-  <nav className="hidden md:flex space-x-4">
-    {navLinks.map((link) => (
-      <NavLinkItem key={link.href} item={link} className="text-white" />
-    ))}
-  </nav>
-);
 
 const NavBar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -143,12 +137,20 @@ const NavBar: FC = () => {
               {t("appTitle")}
             </Link>
           </div>
-
+<LanguageSwitcher />
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <DesktopNav />
-            <LanguageSwitcher />
-            <DonationButton />
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-gray-300 transition"
+              >
+                {t(`nav.${link.label}`)}
+              </Link>
+            ))}
+            
+{/*            <DonationButton />*/}
           </div>
 
           {/* Mobile Menu Button */}
@@ -184,25 +186,7 @@ const NavBar: FC = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navLinks.map((link) => (
-                <NavLinkItem
-                  key={link.href}
-                  item={link}
-                  onClick={() => setIsMenuOpen(false)}
-                />
-              ))}
-              <div className="px-3 py-2">
-                <LanguageSwitcher />
-              </div>
-              <div className="px-3 py-2">
-                <DonationButton compact />
-              </div>
-            </div>
-          </div>
-        )}
+        <LeftDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>
     </nav>
   );
