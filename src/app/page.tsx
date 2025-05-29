@@ -8,14 +8,16 @@ export default function Home() {
   const { t } = useTranslation();
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen flex flex-col">
       <AshParticles />
       {/* Background Image */}
       <div
-        className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-20"
-        style={{ backgroundImage: "url('/assets/got_background.jpg')" }}
+        className="absolute top-0 left-0 w-screen h-full bg-cover bg-center bg-no-repeat opacity-20"
+        style={{ 
+          backgroundImage: "url('/assets/got_background.jpg')"
+        }}
       ></div>
-      <section className="relative min-h-[75vh] sm:min-h-[90vh] md:min-h-screen container mx-auto px-4 py-16">
+      <section className="relative flex-grow container mx-auto px-4 py-16">
         <div className="text-center mb-10">
           <h1 className="custom-header text-5xl font-bold mb-4">
             {t("home.title")}
@@ -34,32 +36,23 @@ export default function Home() {
         </div>
 
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-          <div className="p-6 border rounded-xl shadow-sm bg-black rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">
-              {t("home.feature1.title")}
-            </h3>
-            <p className="text-gray-600">{t("home.feature1.desc")}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+            <h3 className="text-xl font-bold mb-4 text-white">{t("home.feature1.title")}</h3>
+            <p className="text-gray-300">{t("home.feature1.desc")}</p>
           </div>
-          <div className="p-6 border rounded-lg shadow-sm bg-black">
-            <h3 className="text-xl font-semibold mb-2">
-              {t("home.feature2.title")}
-            </h3>
-            <p className="text-gray-600">{t("home.feature2.desc")}</p>
+          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+            <h3 className="text-xl font-bold mb-4 text-white">{t("home.feature2.title")}</h3>
+            <p className="text-gray-300">{t("home.feature2.desc")}</p>
           </div>
-          <div className="p-6 border rounded-lg shadow-sm bg-black">
-            <h3 className="text-xl font-semibold mb-2">
-              {t("home.feature3.title")}
-            </h3>
-            <p className="text-gray-600">{t("home.feature3.desc")}</p>
+          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+            <h3 className="text-xl font-bold mb-4 text-white">{t("home.feature3.title")}</h3>
+            <p className="text-gray-300">{t("home.feature3.desc")}</p>
           </div>
         </div>
 
-        {/* Donation Button */}
-        <div className="hidden md:flex justify-center mt-42">
-          <div className="transform scale-110">
-            <DonationButton />
-          </div>
+        <div className="hidden md:flex justify-center mt-24 mb-16">
+          <DonationButton />
         </div>
       </section>
     </div>

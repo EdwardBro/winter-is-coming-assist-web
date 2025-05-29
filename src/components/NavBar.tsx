@@ -38,11 +38,12 @@ const LanguageSwitcher: FC = () => {
         <button
           key={code}
           onClick={() => handleSwitch(code)}
-          className={`w-9 h-9 flex items-center justify-center rounded transition-colors
+          style={{ width: '2.25rem', height: '2.25rem' }}
+          className={`flex items-center justify-center rounded transition-colors
             ${currentLang === code ? 'bg-slate-500' : 'bg-gray-700 hover:bg-gray-600'}`}
           aria-label={label}
         >
-          <span role="img" aria-label={label}>{flag}</span>
+          <span role="img" aria-label={label} className="text-2xl leading-none select-none">{flag}</span>
         </button>
       ))}
     </div>
@@ -73,7 +74,7 @@ const NavLinkItem: FC<{
         focus:border-sky-400 focus:text-sky-400
         active:border-sky-400 active:text-sky-400
         active:bg-slate-700/30
-        ${isActive ? 'border-sky-400 text-sky-400 bg-slate-700/60' : ''}
+        ${isActive ? 'border-sky-400 text-sky-400 bg-slate-700/60 rounded-lg' : ''}
         ${className}
       `}
     >
@@ -133,39 +134,48 @@ const DesktopNav: FC = () => (
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { t } = useTranslation();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className="bg-gray-800 text-white">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <div className=" font-bold ">
+        <div className="font-bold">
           <Link href="/" className="mx-3 text-md auto-wrap">
             {t("appTitle")}
           </Link>
         </div>
-        <LanguageSwitcher />
-        <DesktopNav />
-        <button
-          type="button"
-          aria-label="Открыть меню"
-          className="md:hidden"
-          onClick={() => setDrawerOpen(true)}
-        >
-          <svg
-            className="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-center">
+          <div className="w-[120px] flex justify-end mr-4">
+            <LanguageSwitcher />
+          </div>
+          <DesktopNav />
+          <button
+            type="button"
+            aria-label="Открыть меню"
+            className="md:hidden"
+            onClick={() => setDrawerOpen(true)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       {/* Drawer menu */}
       <LeftDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
