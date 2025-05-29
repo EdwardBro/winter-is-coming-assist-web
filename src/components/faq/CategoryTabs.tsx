@@ -16,7 +16,6 @@ const CategoryTabs: FC<CategoryTabsProps> = ({
   selectedCategory,
   onSelect,
 }) => {
-  /*const selectedIndex = categories.findIndex((cat) => cat === selectedCategory);*/
 
   /*  const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -35,17 +34,19 @@ const CategoryTabs: FC<CategoryTabsProps> = ({
   return (
     <div
       /*{...handlers}*/
-      className="flex gap-3 mb-8 justify-center flex-wrap border-b border-gray-300"
+      className="flex gap-3 mb-8 justify-center flex-wrap"
     >
       {Object.entries(categories).map(([key, label]) => (
         <button
           key={key}
           onClick={() => onSelect(key)}
-          className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 focus:outline-none
+          className={`relative px-4 py-2 text-sm font-medium transition-all duration-300
+            after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300
+            after:w-0 hover:after:w-full
             ${
               selectedCategory === key
-                ? "border-blue-500 text-white-500"
-                : "border-transparent text-gray-400 hover:text-blue-100 hover:semi-bold semi-bold"
+                ? "text-blue-400 after:w-full"
+                : "text-gray-400 hover:text-blue-400"
             }`}
         >
           {label}
