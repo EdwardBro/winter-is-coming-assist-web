@@ -2,6 +2,7 @@
 import { useTranslation } from "react-i18next";
 import AshParticles from "@/features/AshParticles/AshParticles";
 import Link from "next/link";
+import DonationButton from "@/components/DonationButton";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ export default function Home() {
         </div>
 
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           <div className="p-6 border rounded-xl shadow-sm bg-black rounded-lg">
             <h3 className="text-xl font-semibold mb-2">
               {t("home.feature1.title")}
@@ -51,6 +52,13 @@ export default function Home() {
               {t("home.feature3.title")}
             </h3>
             <p className="text-gray-600">{t("home.feature3.desc")}</p>
+          </div>
+        </div>
+
+        {/* Donation Button */}
+        <div className="hidden md:flex justify-center mt-42">
+          <div className="transform scale-110">
+            <DonationButton />
           </div>
         </div>
       </section>

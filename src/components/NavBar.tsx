@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { NavLink } from "../types";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import DonationButton from "./DonationButton";
 
 const navLinks: NavLink[] = [
   { label: "home", href: "/" },
@@ -32,19 +33,13 @@ const LanguageSwitcher: FC = () => {
   ];
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-1 items-center">
       {languages.map(({ code, flag, label }) => (
         <button
           key={code}
           onClick={() => handleSwitch(code)}
-          className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 shadow-md text-2xl
-            focus:outline-none
-            hover:scale-110 hover:shadow-lg focus:scale-110
-            ${
-              currentLang === code
-                ? "bg-blue-300/20 text-white shadow-lg"
-                : "bg-gray-800 text-gray-300"
-            }`}
+          className={`w-9 h-9 flex items-center justify-center rounded transition-colors
+            ${currentLang === code ? 'bg-slate-500' : 'bg-gray-700 hover:bg-gray-600'}`}
           aria-label={label}
         >
           <span role="img" aria-label={label}>{flag}</span>
@@ -78,7 +73,7 @@ const NavLinkItem: FC<{
         focus:border-sky-400 focus:text-sky-400
         active:border-sky-400 active:text-sky-400
         active:bg-slate-700/30
-        ${isActive ? 'border-sky-400 text-sky-400 bg-slate-700/20' : ''}
+        ${isActive ? 'border-sky-400 text-sky-400 bg-slate-700/60' : ''}
         ${className}
       `}
     >
@@ -87,39 +82,46 @@ const NavLinkItem: FC<{
   );
 };
 
-const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => (
-  <div
-    className={`fixed inset-0 z-40 transition-opacity duration-300 ${
-      isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-    }`}
-    onClick={onClose}
-  >
+const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
+  
+  return (
     <div
-      className="absolute inset-0 bg-black/40"
-      aria-hidden="true"
-    />
-    <div
-      className={`absolute top-0 right-0 w-64 h-full bg-gray-800 shadow-lg transform transition-transform duration-300 ${
-        isOpen ? "-translate-x-0" : "translate-x-full"
+      className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
-      onClick={(e) => e.stopPropagation()}
+      onClick={onClose}
     >
-      <div className="p-6">
-        <h2 className="mb-6 text-2xl font-bold text-white">Menu</h2>
-        <nav className="flex flex-col space-y-5">
-          {navLinks.map((link) => (
-            <NavLinkItem
-              key={link.href}
-              item={link}
-              onClick={onClose}
-              className=""
-            />
-          ))}
-        </nav>
+      <div
+        className="absolute inset-0 bg-black/40"
+        aria-hidden="true"
+      />
+      <div
+        className={`absolute top-0 right-0 w-64 h-full bg-gray-800 shadow-lg transform transition-transform duration-300 ${
+          isOpen ? "-translate-x-0" : "translate-x-full"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="p-6">
+          <h2 className="mb-6 text-2xl font-bold text-white">Menu</h2>
+          <nav className="flex flex-col space-y-5">
+            {navLinks.map((link) => (
+              <NavLinkItem
+                key={link.href}
+                item={link}
+                onClick={onClose}
+                className=""
+              />
+            ))}
+            <div className="mt-4">
+              <DonationButton onClick={onClose} compact />
+            </div>
+          </nav>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const DesktopNav: FC = () => (
   <nav className="hidden md:flex space-x-4">
