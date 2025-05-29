@@ -68,11 +68,13 @@ const NavLinkItem: FC<{
 }> = ({ item, onClick, className = "" }) => {
   const { t } = useTranslation();
   return (
-    // Using the new Next.js Link behavior without a nested <a> tag.
     <Link
       href={item.href}
       onClick={onClick}
-      className={`hover:underline ${className}`}
+      className={`relative px-2 py-1 transition-all duration-300 
+        after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 
+        after:bg-blue-400 after:transition-all after:duration-300
+        hover:after:w-full hover:after:left-0 hover:text-blue-400 ${className}`}
     >
       {t(`nav.${item.label}`)}
     </Link>
@@ -87,24 +89,24 @@ const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => (
     onClick={onClose}
   >
     <div
-      className="absolute inset-0 bg-black/40" // затемняющий фон под drawer
+      className="absolute inset-0 bg-black/40"
       aria-hidden="true"
     />
     <div
-      className={`absolute top-0 right-0 w-64 h-1/2 bg-white shadow-lg m-2 rounded-lg transform transition-transform duration-300 ${
+      className={`absolute top-0 right-0 w-64 h-full bg-gray-800 shadow-lg transform transition-transform duration-300 ${
         isOpen ? "-translate-x-0" : "translate-x-full"
       }`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="p-6">
-        <h2 className="mb-6 text-2xl font-bold text-gray-900">Menu</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Menu</h2>
         <nav className="flex flex-col space-y-5">
           {navLinks.map((link) => (
             <NavLinkItem
               key={link.href}
               item={link}
               onClick={onClose}
-              className="text-lg text-black hover:text-blue-600 transition-colors"
+              className="text-lg text-white hover:text-blue-400 transition-colors"
             />
           ))}
         </nav>
