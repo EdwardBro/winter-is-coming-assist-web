@@ -23,14 +23,16 @@ interface FAQData {
 }
 
 export default function FAQPage() {
-    const { i18n, t } = useTranslation();
-  
+  const { i18n, t } = useTranslation();
+  const [query, setQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("general");
+
   // Добавим проверку на загрузку переводов
   if (!i18n.isInitialized) {
     return <div>Loading...</div>;
   }
 
-const faqData = {
+  const faqData = {
     title: t('faq.title', 'FAQ'),
     description: t('faq.description', 'Frequently Asked Questions'),
     categories: {
@@ -45,10 +47,7 @@ const faqData = {
       : []
   } as FAQData;
 
-  const [query, setQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("general");
   // Filter FAQ items by search query and selected category.
-
   const filteredFaq = faqData.items.filter((item: FAQItem) => {
     const matchesQuery =
       item.question.toLowerCase().includes(query.toLowerCase()) ||
