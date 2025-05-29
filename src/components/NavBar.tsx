@@ -84,8 +84,6 @@ const NavLinkItem: FC<{
 };
 
 const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
-  const { t } = useTranslation();
-  
   return (
     <div
       className={`fixed inset-0 z-40 transition-opacity duration-300 ${
@@ -115,7 +113,7 @@ const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
               />
             ))}
             <div className="mt-4">
-              <DonationButton onClick={onClose} compact />
+              <DonationButton compact />
             </div>
           </nav>
         </div>
@@ -132,54 +130,81 @@ const DesktopNav: FC = () => (
   </nav>
 );
 
-const NavBar = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+const NavBar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const { t } = useTranslation();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="bg-gray-800 text-white">
-      <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="font-bold">
-          <Link href="/" className="mx-3 text-md auto-wrap">
-            {t("appTitle")}
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <div className="w-[120px] flex justify-end mr-4">
-            <LanguageSwitcher />
+    <nav className="bg-gray-900 text-white">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <Link href="/" className="text-xl font-bold">
+              {t("appTitle")}
+            </Link>
           </div>
-          <DesktopNav />
-          <button
-            type="button"
-            aria-label="Открыть меню"
-            className="md:hidden"
-            onClick={() => setDrawerOpen(true)}
-          >
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-4">
+            <DesktopNav />
+            <LanguageSwitcher />
+            <DonationButton />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white hover:text-gray-300 focus:outline-none"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navLinks.map((link) => (
+                <NavLinkItem
+                  key={link.href}
+                  item={link}
+                  onClick={() => setIsMenuOpen(false)}
+                />
+              ))}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
+              <div className="px-3 py-2">
+                <DonationButton compact />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      {/* Drawer menu */}
-      <LeftDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
-    </header>
+    </nav>
   );
 };
 

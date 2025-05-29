@@ -1,22 +1,17 @@
 import React from 'react';
-import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
-import { Coffee } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { Coffee } from "lucide-react";
 
 interface DonationButtonProps {
-  className?: string;
-  onClick?: () => void;
   compact?: boolean;
+  onClick?: () => void;
 }
 
-const DonationButton: React.FC<DonationButtonProps> = ({ className = '', onClick, compact = false }) => {
+const DonationButton: React.FC<DonationButtonProps> = ({ 
+  compact = false, 
+  onClick 
+}) => {
   const { t } = useTranslation();
-
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
 
   return (
     <div className="relative">
@@ -24,7 +19,7 @@ const DonationButton: React.FC<DonationButtonProps> = ({ className = '', onClick
         href="https://www.buymeacoffee.com/ed_bro"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={handleClick}
+        onClick={onClick}
         className={`
           flex items-center gap-2 px-4 py-2 rounded-lg font-medium
           bg-[#FFDD00] text-black hover:bg-[#FFDD00]/90

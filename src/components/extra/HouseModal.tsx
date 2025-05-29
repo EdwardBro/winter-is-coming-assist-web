@@ -3,6 +3,7 @@
 import React from "react";
 import type { HouseData } from "@/data/houses";
 import { X } from 'lucide-react';
+import Image from "next/image";
 
 interface HouseModalProps {
   house: HouseData;
@@ -32,9 +33,11 @@ const HouseModal: React.FC<HouseModalProps> = ({ house, onClose }) => {
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-3xl font-bold mb-2 text-slate-800 drop-shadow">{house.name}</h2>
           {house.shieldImage && (
-            <img
+            <Image
               src={house.shieldImage}
               alt={house.name}
+              width={128}
+              height={128}
               className="w-32 h-32 object-contain rounded-xl shadow mb-2 border border-slate-300 bg-white/60"
             />
           )}

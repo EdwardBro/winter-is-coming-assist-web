@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { houses, HouseData } from "@/data/houses";
 import HouseModal from "./HouseModal";
+import Image from "next/image";
 
 export default function HouseGridOverlay() {
   const [selectedHouse, setSelectedHouse] = useState<HouseData | null>(null);
@@ -29,9 +30,11 @@ export default function HouseGridOverlay() {
     <div className="relative w-full">
       {/* The main map image */}
       <div className="relative w-full">
-        <img
+        <Image
           src="/assets/houses_menu.png"
           alt="Heraldry Map"
+          width={1200}
+          height={800}
           className="w-full h-auto object-cover"
         />
       </div>
