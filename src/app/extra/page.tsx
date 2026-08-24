@@ -1,16 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { houses } from "@/data/houses";
 import HouseMapOverlay from "@/components/extra/HouseMapOverlay";
-import HouseModal from "@/components/extra/HouseModal";
 import { useTranslation } from "react-i18next";
 
 const ExtraPage: React.FC = () => {
   const { t } = useTranslation();
-  const [selectedHouse, setSelectedHouse] = useState<(typeof houses)[0] | null>(
-    null
-  );
 
   return (
     <div className="container mx-auto py-4">
@@ -21,13 +15,6 @@ const ExtraPage: React.FC = () => {
       <div className="flex justify-center">
         <HouseMapOverlay />
       </div>
-
-      {selectedHouse && (
-        <HouseModal
-          house={selectedHouse}
-          onClose={() => setSelectedHouse(null)}
-        />
-      )}
     </div>
   );
 };

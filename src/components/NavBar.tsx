@@ -4,7 +4,7 @@ import React, { FC, useState } from "react";
 import Link from "next/link";
 import type { NavLink } from "../types";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import DonationButton from "./DonationButton";
 
 const navLinks: NavLink[] = [
@@ -61,8 +61,8 @@ const NavLinkItem: FC<{
   className?: string;
 }> = ({ item, onClick, className = "" }) => {
   const { t } = useTranslation();
-  const router = useRouter();
-  const isActive = router && typeof window !== 'undefined' ? window.location.pathname === item.href : false;
+  const pathname = usePathname();
+  const isActive = pathname === item.href;
   return (
     <Link
       href={item.href}
@@ -84,8 +84,6 @@ const NavLinkItem: FC<{
 };
 
 const LeftDrawer: FC<DrawerProps> = ({ isOpen, onClose }) => {
-  /*const { t } = useTranslation();*/
-  
   return (
     <div
       className={`fixed inset-0 z-40 transition-opacity duration-300 md:hidden ${
@@ -149,8 +147,6 @@ const NavBar: FC = () => {
                 {t(`nav.${link.label}`)}
               </Link>
             ))}
-            
-{/*            <DonationButton />*/}
           </div>
 
           {/* Mobile Menu Button */}
