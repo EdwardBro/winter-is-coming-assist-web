@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import type { HouseData } from "@/data/houses";
+import { getHouseCards, type HouseData } from "@/data/houses";
 import { X } from 'lucide-react';
 import Image from "next/image";
 
@@ -11,6 +11,8 @@ interface HouseModalProps {
 }
 
 const HouseModal: React.FC<HouseModalProps> = ({ house, onClose }) => {
+  const houseCards = getHouseCards(house);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300 animate-fadeIn"
@@ -46,11 +48,11 @@ const HouseModal: React.FC<HouseModalProps> = ({ house, onClose }) => {
             <p><span className="font-semibold text-slate-700">Глава дома:</span> {house.leader}</p>
             <p><span className="font-semibold text-slate-700">Девиз:</span> {house.motto}</p>
           </div>
-          {house.cards.length > 0 && (
+          {houseCards.length > 0 && (
             <div className="w-full mt-4">
               <h3 className="text-lg font-bold mb-1 text-slate-700">Карты дома:</h3>
               <ul className="grid grid-cols-1 gap-1 list-disc list-inside pl-4">
-                {house.cards.map((card) => (
+                {houseCards.map((card) => (
                   <li key={card.id} className="text-slate-700/90">
                     {card.title}
                   </li>

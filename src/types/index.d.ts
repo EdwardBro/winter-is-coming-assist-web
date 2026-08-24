@@ -7,17 +7,26 @@ export interface NavLink {
   label: string;
   href: string;
 }
-export interface HouseCard {
+// Expansion keys — kept in sync with data/expansionMap.ts and the
+// rules.expansions.* keys in the locale files.
+export type Expansion =
+  | "BASE"
+  | "A FEAST FOR CROWS"
+  | "MOTHER OF DRAGONS"
+  | "A DANCE WITH DRAGONS";
+
+// Reference to a single house card within one specific expansion.
+export interface HouseCardRef {
   id: string;
   title: string;
-  image?: string; // Path to the card image in public folder.
-  description?: string;
-  faction: string;
-  cards: { id: string; title: string }[];
-  // Можно добавить дополнительные поля, если понадобится
-  // Например, lang: string;
-  // Или дополнительные параметры для сортировки
 }
+
+// Cards a house has for one expansion. Usually a flat list; some
+// expansions ship more than one alternate print set for a house (e.g.
+// House Targaryen's "Mother of Dragons" Набор А / Набор Б, chosen for
+// game balance depending on which decks the other houses use) — in that
+// case it's a map from a free-form variant label to that set's cards.
+export type HouseCardSet = HouseCardRef[] | Record<string, HouseCardRef[]>;
 
 export interface SimpleCard {
   id: string;
@@ -25,4 +34,6 @@ export interface SimpleCard {
   image: string;
   description?: string;
   faction: string;
+  expansion: Expansion;
+  variant?: string;
 }

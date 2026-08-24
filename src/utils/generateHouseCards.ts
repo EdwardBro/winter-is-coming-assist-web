@@ -1,5 +1,5 @@
 import { descriptions } from "@/data/descriptions";
-import { houses } from "@/data/houses";
+import { getHouseCardEntries, houses } from "@/data/houses";
 import { imageMap } from "@/data/imageMap";
 import { SimpleCard } from "@/types";
 
@@ -7,7 +7,7 @@ export const generateHouseCards = (): SimpleCard[] => {
   const cards: SimpleCard[] = [];
 
   for (const house of houses) {
-    for (const card of house.cards) {
+    for (const { card, expansion, variant } of getHouseCardEntries(house)) {
       const image = imageMap[card.id];
 
       if (!image) {
@@ -23,6 +23,8 @@ export const generateHouseCards = (): SimpleCard[] => {
           descriptions[card.id] ??
           `Карта ${card.title}, принадлежащая дому ${house.name}`,
         faction: house.id,
+        expansion,
+        variant,
       });
     }
   }
