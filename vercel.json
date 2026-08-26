@@ -1,0 +1,22 @@
+{
+  "headers": [
+    {
+      "source": "/pdf/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=172800, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=172800, immutable"
+        }
+      ]
+    }
+  ]
+}

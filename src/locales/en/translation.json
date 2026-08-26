@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "Home",
+    "rules": "Rules",
+    "faq": "FAQ",
+    "hints": "Hints",
+    "extra": "Extra",
+    "cards": "Cards"
+  },
+  "home": {
+    "title": "Game of Thrones Assist",
+    "description": "Your assistant for mastering complex board game rules.",
+    "button": "View Rules",
+    "cta": "Become the one Ruler of Westeros!",
+    "feature1": {
+      "title": "Easy Navigation",
+      "desc": "Quickly access rules and guides for a smooth gameplay experience."
+    },
+    "feature2": {
+      "title": "Interactive FAQ",
+      "desc": "Get instant answers to your questions with our interactive FAQ."
+    },
+    "feature3": {
+      "title": "Detailed Guides",
+      "desc": "In-depth strategies and tips to help you master the game."
+    }
+  },
+  "footer": {
+    "rights": "© {{year}} All rights reserved. This app is not affiliated with HBO or Fantasy Flight Games.",
+    "buyMeCoffee": "Support the Developer's Mission :)"
+  },
+  "appTitle": "Game of Thrones Assist",
+  "rules": {
+    "title": "Rules",
+    "loading": "Loading PDF file...",
+    "error": "Failed to load PDF or they don't exist",
+    "page": "Page",
+    "expansions": {
+      "BASE": "Base Game",
+      "MOTHER OF DRAGONS": "Mother of Dragons",
+      "A FEAST FOR CROWS": "A Feast for Crows",
+      "A DANCE WITH DRAGONS": "A Dance with Dragons"
+    }
+  },
+  "hints": {
+    "title": "Hints",
+    "intro": "Here you will find tips and tricks to improve your Game of Thrones games.",
+    "tip": "Tip",
+    "list": [
+      "Keep an eye on your supply!",
+      "Use diplomacy — you don't always need war to win.",
+      "Plan several moves ahead."
+    ],
+    "1": {
+      "title": "How to start as Lannisters"
+    },
+    "2": {
+      "title": "How to start as Starks"
+    },
+    "3": {
+      "title": "How to start as Baratheons"
+    },
+    "4": {
+      "title": "How to start as Greyjoys"
+    },
+    "5": {
+      "title": "How to start as Martells"
+    },
+    "6": {
+      "title": "How to start as Tyrells"
+    },
+    "overview": "Overview",
+    "beginnings": "Starting Tips"
+  },
+  "extra": {
+    "title": "Extra",
+    "description": "Here you will find info about houses."
+  },
+  "cards": {
+    "title": "Cards",
+    "description": "“I have heard rumors that you can find character cards and interesting facts about them here.” - Lord Varys"
+  },
+"faq": {
+    "title": "FAQ",
+    "description": "Frequently Asked Questions and Answers",
+    "categories": {
+      "general": "General",
+      "gameplay": "Gameplay",
+      "ports": "Ports",
+      "hire": "Hire",
+      "special_tokens": "Special Tokens"
+    },
+    "items": [
+      {
+        "question": "How to use ports?",
+        "answer": "A port is a special area connecting land and sea. The owner of the port is considered to be the House that controls the land adjacent to the port. It can hold a maximum of 3 ships. The port can be used to land armies between sea and land, as well as to attack an adjacent sea or support on land and sea.",
+        "category": "Ports"
+      },
+      {
+        "question": "What is the optimal strategy?",
+        "answer": "The optimal strategy depends on your playstyle and the current game state.",
+        "category": "Gameplay"
+      },
+      {
+        "question": "How to hire troops?",
+        "answer": "Troops can be hired in any area that has a CASTLE or STRONGHOLD. STRONGHOLD = 2 muster points, CASTLE = 1 muster point. These points only work in the area where the corresponding structure is located! Footman = 1 pt, Knight = 2 pts, Ship = 1 pt, Siege Engine = 2 pts. Upgrading a footman unit to a knight OR siege engine = 1 pt.",
+        "category": "Hire"
+      },
+      {
+        "question": "What does the Messenger Raven do?",
+        "answer": "The raven during the order reveal phase (AND ONLY THEN) allows you to look at a card from the Wildling deck. OR you can replace one of YOUR orders on the table with an order from the RESERVE. This allows you to better plan your actions.",
+        "category": "Special Tokens"
+      },
+      {
+        "question": "What does the Iron Throne do?",
+        "answer": "The Iron Throne resolves disputed situations in the game. For example, who gets the effects when the Night's Watch and Wildlings have the same number of influence on the track or who will stand on the influence tracks when the stakes are equal.",
+        "category": "Special Tokens"
+      },
+      {
+        "question": "What does the Valyrian Sword do?",
+        "answer": "The Valyrian Sword gives its owner +1 strength in battle, with its participation. Works once per round. With the Mother of Dragons expansion, it also allows you to kill one unit of a player who cannot pay off loans to the Iron Bank.",
+        "category": "Special Tokens"
+      }
+    ]
+  }
+}
