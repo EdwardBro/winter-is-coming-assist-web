@@ -6,11 +6,11 @@ export interface HouseData {
   seat: string;
   leader: string;
   motto: string;
-  shieldX?: number; // X coordinate on the map
-  shieldY?: number; // Y coordinate on the map
-  shieldImage?: string; // Optional: path to a shield icon or larger image
+  shieldX?: number;
+  shieldY?: number;
+  shieldImage?: string;
   cardsByExpansion: Partial<Record<Expansion, HouseCardSet>>;
-  description?: string; // Optional: lore description
+  description?: string;
 }
 
 export interface HouseCardEntry {
@@ -19,10 +19,7 @@ export interface HouseCardEntry {
   variant?: string;
 }
 
-// Returns every card a house has across all expansions and variants,
-// each tagged with the expansion (and variant, when applicable) it
-// belongs to. Use this when that provenance matters, e.g. grouping the
-// card gallery by expansion.
+// A house's cards tagged with expansion/variant provenance.
 export function getHouseCardEntries(house: HouseData): HouseCardEntry[] {
   const entries: HouseCardEntry[] = [];
 
@@ -42,10 +39,7 @@ export function getHouseCardEntries(house: HouseData): HouseCardEntry[] {
   return entries;
 }
 
-// Returns every card a house has across all expansions and variants,
-// regardless of which print set they belong to. Use this for contexts
-// that don't care about provenance (e.g. a plain "cards of this house"
-// list).
+// A house's cards flattened, without provenance.
 export function getHouseCards(house: HouseData): HouseCardRef[] {
   return getHouseCardEntries(house).map((entry) => entry.card);
 }

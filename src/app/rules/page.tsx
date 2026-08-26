@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { expansionMapping } from "@/data/expansionMap";
+import { getShortLang } from "@/utils/language";
 
 const PDFViewer = dynamic(() => import("@/components/PDFViewer"), {
   ssr: false,
@@ -22,7 +23,7 @@ export default function RulesPage() {
   const [selectedExpansion, setSelectedExpansion] = useState("BASE");
 
   const filePrefix = expansionMapping[selectedExpansion] || "rules";
-  const pdfFilePath = `/pdf/${filePrefix}_${i18n.language.toUpperCase()}.pdf`;
+  const pdfFilePath = `/pdf/${filePrefix}_${getShortLang(i18n.language).toUpperCase()}.pdf`;
 
   useEffect(() => {
     const savedPage = localStorage.getItem("rulesPageNumber");

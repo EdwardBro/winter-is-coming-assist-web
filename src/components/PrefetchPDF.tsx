@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { getShortLang } from "@/utils/language";
 
 const pdfFiles = {
   ru: [
@@ -17,7 +18,7 @@ const pdfFiles = {
 
 export default function PrefetchPDF() {
   const { i18n } = useTranslation();
-  const lang = i18n.language.startsWith("ru") ? "ru" : "en";
+  const lang = getShortLang(i18n.language);
 
   useEffect(() => {
     pdfFiles[lang].forEach((url) => {
